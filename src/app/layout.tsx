@@ -25,7 +25,7 @@ export default function RootLayout({
       </Head>
       <body className="flex min-h-screen w-screen flex-col font-sans">
         <Nav />
-        <div className="grow px-8">{children}</div>
+        <div className="grow">{children}</div>
         <Footer />
       </body>
     </html>
