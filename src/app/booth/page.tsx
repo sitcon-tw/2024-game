@@ -1,3 +1,3 @@
-export default function Page(){
-    return <div>Booth</div>
+export default function Page() {
+  return <div>Booth</div>;
 }

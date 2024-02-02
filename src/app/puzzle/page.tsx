@@ -1,3 +1,3 @@
-export default function Page(){
-    return <div>Puzzle</div>
+export default function Page() {
+  return <div>Puzzle</div>;
 }

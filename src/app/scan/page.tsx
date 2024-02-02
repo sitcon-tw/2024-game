@@ -1,3 +1,3 @@
-export default function Page(){
-    return <div>Scan</div>
+export default function Page() {
+  return <div>Scan</div>;
 }
