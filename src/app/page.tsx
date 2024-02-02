@@ -1,3 +1,18 @@
+"use client";
+
+import { Menu } from "@/components/Menu";
+import { useState } from "react";
+
 export default function Home() {
-  return <h1>Page</h1>;
+  const [active, setActive] = useState(0);
+
+  return (
+    <div>
+      <Menu
+        texts={["議程", "攤位", "特殊活動"]}
+        active={active}
+        setActive={setActive}
+      />
+    </div>
+  );
 }
