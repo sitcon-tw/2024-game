@@ -5,7 +5,7 @@ export type ActivityType = {
     images: string[];
 };
 
-export const sessions: ActivityType[] = [
+const sessions: ActivityType[] = [
     {
         name: "議程一",
         description: "議程一的描述",
@@ -108,7 +108,7 @@ export const sessions: ActivityType[] = [
     }
 ]
 
-export const booths: ActivityType[] = [
+const booths: ActivityType[] = [
     {
         name: "攤位一",
         description: "攤位一的描述",
@@ -191,7 +191,7 @@ export const booths: ActivityType[] = [
     },
 ]
 
-export const others: ActivityType[] = [
+const others: ActivityType[] = [
     {
         name: "特殊活動一",
         description: "特殊活動一的描述",
@@ -225,3 +225,5 @@ export const others: ActivityType[] = [
         images: []
     },
 ]
+
+export const activities = [sessions, booths, others]
