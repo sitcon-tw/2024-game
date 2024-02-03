@@ -4,6 +4,7 @@ import Image from "next/image";
 import book from "@/img/book.svg";
 import { heading } from "@/varients/heading";
 import { useState } from "react";
+import { Window } from "./Window";
 
 // TODO: window
 
@@ -22,6 +23,7 @@ export function Nav() {
         <Image src={book} width={20} height={22} alt="" />
         <h3 className={heading({ level: 3 })}>規則</h3>
       </div>
+      <Window title="規則" content="規則內容" isOpen={open} close={() => setOpen(false)} />
     </nav>
   );
 }
