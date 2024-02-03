@@ -21,7 +21,7 @@ function Activity({
         finished ? "bg-sitcon-secondary" : "border-sitcon-secondary border",
       )}
     >
-      <p className={text({ level: 1 })}>{activity.description}</p>
+      <p className={text({ level: 1 })}>{activity.name}</p>
       <svg
         width="54"
         height="54"
