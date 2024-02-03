@@ -105,14 +105,24 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-3 gap-5">
-          {data.map((activity, i) => (
-            <Activity
-              key={i}
-              activity={activity}
-              finished={isActivityFinished(activity, i)}
-              setOpen={setOpen}
-            />
-          ))}
+          {data
+            .filter((item, index) => {
+              if (filter === "all") return true;
+              else if (filter === "finished")
+                return isActivityFinished(item, index);
+              else return !isActivityFinished(item, index);
+            })
+            .map((activity, i) => (
+              <Activity
+                key={activity.name}
+                activity={activity}
+                finished={
+                  (filter === "all" && isActivityFinished(activity, i)) ||
+                  filter === "finished"
+                }
+                setOpen={setOpen}
+              />
+            ))}
         </div>
       </div>
       <Detail />
