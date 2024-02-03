@@ -1,5 +1,6 @@
 "use client";
 
+import { useDetail } from "@/components/Detail";
 import { Menu } from "@/components/Menu";
 import { type ActivityType, activities } from "@/data/activity";
 import { heading } from "@/varients/heading";
@@ -10,16 +11,19 @@ import { twMerge } from "tailwind-merge";
 function Activity({
   activity,
   finished,
+  setOpen,
 }: {
   activity: ActivityType;
   finished: boolean;
+  setOpen: (activity: ActivityType) => void;
 }) {
   return (
     <div
       className={twMerge(
         "flex flex-col items-center gap-4 break-all rounded-2xl px-2 py-4 text-center shadow-[1px_3px_6px_0px_#0000001A]",
-        finished ? "bg-sitcon-secondary" : "border-sitcon-secondary border",
+        finished ? "bg-sitcon-secondary" : "border border-sitcon-secondary",
       )}
+      onClick={() => setOpen(activity)}
     >
       <p className={text({ level: 1 })}>{activity.name}</p>
       <svg
@@ -50,6 +54,7 @@ export default function Home() {
   const [active, setActive] = useState(0);
   const finished = [[1, 2, 5], [1, 2], []][active]; // TODO: useFinished('session')
   const [filter, setFilter] = useState<Filter>("all");
+  const [Detail, setOpen] = useDetail();
 
   const data = activities[active];
 
@@ -76,9 +81,9 @@ export default function Home() {
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="border-sitcon-black h-3 grow rounded-full border-2">
+          <div className="h-3 grow rounded-full border-2 border-sitcon-black">
             <div
-              className="bg-sitcon-primary h-full rounded-full"
+              className="h-full rounded-full bg-sitcon-primary"
               style={{ width: `${(finished.length / data.length) * 100}%` }}
             />
           </div>
@@ -91,7 +96,7 @@ export default function Home() {
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value as Filter)}
-            className="border-sitcon-secondary bg-sitcon-white h-10 w-24 rounded-md border-2 px-3 py-[6px]"
+            className="h-10 w-24 rounded-md border-2 border-sitcon-secondary bg-sitcon-white px-3 py-[6px]"
           >
             <option value="all">ALL</option>
             <option value="finished">已完成</option>
@@ -105,10 +110,12 @@ export default function Home() {
               key={i}
               activity={activity}
               finished={isActivityFinished(activity, i)}
+              setOpen={setOpen}
             />
           ))}
         </div>
       </div>
+      <Detail />
     </div>
   );
 }
