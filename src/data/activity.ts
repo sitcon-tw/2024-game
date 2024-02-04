@@ -2,61 +2,8 @@ export type ActivityType = {
   name: string;
   description?: string;
   link?: string;
+  hide?: boolean;
 };
-
-// 議程
-const sessions: ActivityType[] = [
-  {
-    name: "議程一",
-    description: "議程一的描述",
-    link: "https://sitcon.org/2024",
-  },
-  {
-    name: "議程二",
-    description: "議程二的描述",
-    link: "https://sitcon.org/2024",
-  },
-  {
-    name: "議程三",
-    description: "議程三的描述",
-    link: "https://sitcon.org/2024",
-  },
-  {
-    name: "議程四",
-    description: "議程四的描述",
-    link: "https://sitcon.org/2024",
-  },
-  {
-    name: "議程五",
-    description: "議程五的描述",
-    link: "https://sitcon.org/2024",
-  },
-  {
-    name: "議程六",
-    description: "議程六的描述",
-    link: "https://sitcon.org/2024",
-  },
-  {
-    name: "議程七",
-    description: "議程七的描述",
-    link: "https://sitcon.org/2024",
-  },
-  {
-    name: "議程八",
-    description: "議程八的描述",
-    link: "https://sitcon.org/2024",
-  },
-  {
-    name: "議程九",
-    description: "議程九的描述",
-    link: "https://sitcon.org/2024",
-  },
-  {
-    name: "議程十",
-    description: "議程十的描述",
-    link: "https://sitcon.org/2024",
-  },
-];
 
 // 攤位
 const booths: ActivityType[] = [
@@ -112,24 +59,75 @@ const booths: ActivityType[] = [
   },
 ];
 
-// 特殊活動
-const others: ActivityType[] = [
+// 年會活動
+const events: ActivityType[] = [
   {
-    name: "特殊活動一",
-    description: "特殊活動一的描述",
+    name: "活動一",
+    description: "活動一的描述",
   },
   {
-    name: "特殊活動二",
-    description: "特殊活動二的描述",
+    name: "活動二",
+    description: "活動二的描述",
   },
   {
-    name: "特殊活動三",
-    description: "特殊活動三的描述",
+    name: "活動三",
+    description: "活動三的描述",
   },
   {
-    name: "特殊活動四",
-    description: "特殊活動四的描述",
+    name: "活動四",
+    description: "活動四的描述",
+  },
+  {
+    name: "活動五",
+    description: "活動五的描述",
+  },
+  {
+    name: "活動六",
+    description: "活動六的描述",
+  },
+  {
+    name: "活動七",
+    description: "活動七的描述",
+  },
+  {
+    name: "活動八",
+    description: "活動八的描述",
+  },
+  {
+    name: "活動九",
+    description: "活動九的描述",
+  },
+  {
+    name: "活動十",
+    description: "活動十的描述",
+  }
+];
+
+const bonus: ActivityType[] = [
+  {
+    name: "開幕式",
+    description: "開幕式的描述",
+  },
+  {
+    name: "獎品一",
+    description: "獎品一的描述",
+  },
+  {
+    name: "獎品二",
+    description: "獎品二的描述",
+  },
+  {
+    name: "躲貓貓一",
+    hide: true,
+  },
+  {
+    name: "躲貓貓二",
+    hide: true,
+  },
+  {
+    name: "躲貓貓三",
+    hide: true,
   },
 ];
 
-export const activities = [sessions, booths, others];
+export const activities = [booths, events, bonus];

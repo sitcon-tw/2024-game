@@ -52,21 +52,29 @@ type Filter = "all" | "finished" | "unfinished";
 
 export default function Home() {
   const [active, setActive] = useState(0);
-  const finished = [[1, 2, 5], [1, 2], []][active]; // TODO: useFinished('session')
+  const finished = [[1, 2, 5], [1, 2], [4]][active]; // TODO: useFinished('session')
   const [filter, setFilter] = useState<Filter>("all");
   const [Detail, setOpen] = useDetail();
-
-  const data = activities[active];
 
   // This maybe need to be modified
   function isActivityFinished(activity: ActivityType, index: number) {
     return finished.includes(index);
   }
 
+  const data = activities[active].map((item, index) => ({
+    isFinished: isActivityFinished(item, index),
+    ...item,
+  }));
+
+  const totalN = data.filter((item) => item.isFinished || !item.hide).length;
+  const finishedN = data.filter((item, index) =>
+    isActivityFinished(item, index),
+  ).length;
+
   return (
     <div>
       <Menu
-        texts={["議程", "攤位", "特殊活動"]}
+        texts={["攤位", "年會活動", "Bonus"]}
         active={active}
         setActive={setActive}
       />
@@ -84,11 +92,11 @@ export default function Home() {
           <div className="h-3 grow rounded-full border-2 border-sitcon-black">
             <div
               className="h-full rounded-full bg-sitcon-primary"
-              style={{ width: `${(finished.length / data.length) * 100}%` }}
+              style={{ width: `${(finishedN / totalN) * 100}%` }}
             />
           </div>
           <p>
-            {finished.length}/{data.length}
+            {finishedN} / {totalN}
           </p>
         </div>
 
@@ -106,20 +114,18 @@ export default function Home() {
 
         <div className="grid grid-cols-3 gap-5">
           {data
-            .filter((item, index) => {
+            .filter((item) => {
               if (filter === "all") return true;
-              else if (filter === "finished")
-                return isActivityFinished(item, index);
-              else return !isActivityFinished(item, index);
+              else return (filter === "finished") === item.isFinished;
             })
-            .map((activity, i) => (
+            .filter((item) => {
+              return item.isFinished || !item.hide;
+            })
+            .map((activity) => (
               <Activity
                 key={activity.name}
                 activity={activity}
-                finished={
-                  (filter === "all" && isActivityFinished(activity, i)) ||
-                  filter === "finished"
-                }
+                finished={activity.isFinished}
                 setOpen={setOpen}
               />
             ))}
