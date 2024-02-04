@@ -103,6 +103,7 @@ const events: ActivityType[] = [
   }
 ];
 
+// bonus
 const bonus: ActivityType[] = [
   {
     name: "開幕式",
