@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { QrReader } from 'react-qr-reader';
 import {InfoWindow} from '../components/InfoWindow';
+import { sendPuzzle2Player } from '@/lib/sendPuzzle2Player';
+import { getPlayerPuzzle } from '@/lib/getPlayerPuzzle';
 
 const Scanner = () => {
   const [IsgetData, setIsgetData] = useState(false);
@@ -18,7 +20,9 @@ const Scanner = () => {
           onResult={(result) => {
             if(!!result) {
               // alert(data);
+              // check the data if it is valid
               setIsgetData(true);
+              // sendPuzzle2Player('7679f08f7eaeef5e9a65a1738ae2840e', '') send Puzzle to the player, how to get playerToken
             }
           }}
           constraints={{ facingMode: facingMode }}
