@@ -34,7 +34,12 @@ export function useDetail() {
               <h4 className={twMerge(heading({ level: 4 }), "m-2")}>
                 {activity?.name}
               </h4>
-              <p className={text({ level: 1 })}>{activity?.description}</p>
+              {Array.isArray(activity?.description) &&
+                activity.description.map((desc, index) => (
+                  <p key={index} className={text({ level: 1 })}>
+                    {desc}
+                  </p>
+                ))}
               {activity?.link && (
                 <Link
                   href={activity.link}
