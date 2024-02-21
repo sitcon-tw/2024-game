@@ -54,7 +54,7 @@ export default function Page() {
           </motion.button>
         </div>
         <div className="text-center text-2xl text-gray-600">
-          在 OPass &gt; 大地遊戲 &gt; 掃描器中輸入以下代碼來取得拼圖
+          在 OPass &gt; 大地遊戲 &gt; 掃描器中輸入以上代碼來取得拼圖
         </div>
       </motion.div>
     </div>
