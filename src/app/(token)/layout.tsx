@@ -1,8 +1,6 @@
 import Head from "next/head";
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
 
-import "./globals.css";
+import "../globals.css";
 
 export default function RootLayout({
   children,
@@ -19,14 +17,12 @@ export default function RootLayout({
           crossOrigin=""
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Rubik:wght@500;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
           rel="stylesheet"
         />
       </Head>
-      <body className="flex min-h-screen w-screen flex-col font-sans">
-        <Nav />
-        <div className="grow">{children}</div>
-        <Footer />
+      <body className="flex min-h-screen w-screen flex-col bg-sitcon-color8 font-sans">
+        {children}
       </body>
     </html>
   );
