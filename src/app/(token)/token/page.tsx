@@ -30,7 +30,7 @@ export default function Page() {
       transition={{ duration: 0.5 }}
     >
       <h1 className="text-center text-4xl font-bold">
-        你找到了拼圖
+        你發現了拼圖碎片
         <span className="absolute">！</span>
       </h1>
       <div className="my-4 flex flex-wrap items-center justify-between gap-6 rounded-2xl bg-gray-50 p-4 pl-6 text-center text-6xl shadow">
