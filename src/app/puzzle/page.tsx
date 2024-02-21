@@ -1,8 +1,8 @@
-'use client';
-import { Menu } from '@/components/Menu'
-import React, { useState } from 'react'
+"use client";
+import { Menu } from "@/components/Menu";
+import { useState } from "react";
 
-const page = () => {
+export default function Page() {
   const [active, setActive] = useState(0);
   return (
     <div>
@@ -12,7 +12,5 @@ const page = () => {
         setActive={setActive}
       />
     </div>
-  )
+  );
 }
-
-export default page
