@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 export default function Page() {
   const [token, setToken] = useState("");
   const [copied, setCopied] = useState(false);
@@ -22,7 +22,13 @@ export default function Page() {
     }, 500);
   }
   return (
-    <div className="mx-auto w-full max-w-[512px] px-2 py-10">
+    <motion.div
+      className="mx-auto w-full max-w-[512px] px-2 py-10"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 100 }}
+      transition={{ duration: 0.5 }}
+    >
       <h1 className="text-center text-4xl font-bold">
         你找到了拼圖
         <span className="absolute">！</span>
@@ -49,6 +55,6 @@ export default function Page() {
       <div className="text-center text-2xl text-gray-600">
         在 OPass &gt; 大地遊戲 &gt; 掃描器中輸入以下代碼來取得拼圖
       </div>
-    </div>
+    </motion.div>
   );
 }
