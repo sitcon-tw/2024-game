@@ -7,28 +7,42 @@ import { getPlayerPuzzle } from '@/lib/getPlayerPuzzle';
 
 const Scanner = () => {
   const [IsgetData, setIsgetData] = useState(false);
+  const [startScan, setStartScan] = useState(false);
   const [facingMode, setFacingMode] = useState('environment');
 
   return (
     <div className='flex justify-center items-center '>
       <div className='w-full'>
-        <QrReader
-          onResult={(result) => {
-            if(!!result) {
-              // alert(data);
-              // check the data if it is valid
-              setIsgetData(true);
-              // sendPuzzle2Player('7679f08f7eaeef5e9a65a1738ae2840e', '') send Puzzle to the player, how to get playerToken
-            }
-          }}
-          constraints={{ facingMode: facingMode }}
-        />
-        <div className=' justify-center text-center items-center'>
-            <select onChange={(e) => setFacingMode(e.target.value)}>
-              <option value={"environment"}>後置鏡頭</option>
-              <option value={"user"}>前置鏡頭</option>
-            </select>
-        </div>
+        <div className='justify-center text-center items-center mt-5'>
+          <button
+            onClick={() => {
+              setStartScan(!startScan);
+            }}
+          >
+            {startScan ? "關閉掃描器" : "開啟掃描器"}
+          </button>
+        </div>           
+        {startScan && (
+          <>
+            <div className='justify-center text-center items-center'>
+                <select onChange={(e) => setFacingMode(e.target.value)}>
+                  <option value={"environment"}>後置鏡頭</option>
+                  <option value={"user"}>前置鏡頭</option>
+                </select>
+            </div>
+            <QrReader
+              onResult={(result) => {
+                if(!!result) {
+                  // alert(data);
+                  // check the data if it is valid
+                  setIsgetData(true);
+                  // sendPuzzle2Player('7679f08f7eaeef5e9a65a1738ae2840e', '') send Puzzle to the player, how to get playerToken
+                }
+              }}
+              constraints={{ facingMode: facingMode }}
+            />
+          </>
+        )}
       </div>
       {IsgetData && <InfoWindow msg="恭喜獲得一塊拼圖!!" onClose={() => setIsgetData(false)} />}
     </div>
