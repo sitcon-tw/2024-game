@@ -7,11 +7,7 @@ import { getPlayerPuzzle } from '@/lib/getPlayerPuzzle';
 
 const Scanner = () => {
   const [IsgetData, setIsgetData] = useState(false);
-  const [facingMode, setFacingMode] = useState('user');
-
-  const toggleFacingMode = () => {
-    setFacingMode(prevMode => prevMode === 'user' ? 'environment' : 'user');
-  };
+  const [facingMode, setFacingMode] = useState('environment');
 
   return (
     <div className='flex justify-center items-center '>
@@ -28,7 +24,10 @@ const Scanner = () => {
           constraints={{ facingMode: facingMode }}
         />
         <div className=' justify-center text-center items-center'>
-            <button className='' onClick={toggleFacingMode}>切換鏡頭</button>
+            <select onChange={(e) => setFacingMode(e.target.value)}>
+              <option value={"environment"}>後置鏡頭</option>
+              <option value={"user"}>前置鏡頭</option>
+            </select>
         </div>
       </div>
       {IsgetData && <InfoWindow msg="恭喜獲得一塊拼圖!!" onClose={() => setIsgetData(false)} />}
