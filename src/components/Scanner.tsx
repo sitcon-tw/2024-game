@@ -7,22 +7,13 @@ import { getPlayerPuzzle } from '@/lib/getPlayerPuzzle';
 
 const Scanner = () => {
   const [IsgetData, setIsgetData] = useState(false);
-  const [startScan, setStartScan] = useState(false);
+  const [startScan, setStartScan] = useState(true);
   const [facingMode, setFacingMode] = useState('environment');
 
   return (
-    <div className='flex justify-center items-center '>
-      <div className='w-full'>
-        <div className='justify-center text-center items-center mt-5'>
-          <button
-            onClick={() => {
-              setStartScan(!startScan);
-            }}
-          >
-            {startScan ? "關閉掃描器" : "開啟掃描器"}
-          </button>
-        </div>           
-        <div className='justify-center text-center items-center'>
+    <div className='flex'>
+      <div className='w-full'>        
+        <div className='justify-center text-center items-center mt-24'>
             <select onChange={(e) => setFacingMode(e.target.value)}>
               <option value={"environment"}>後置鏡頭</option>
               <option value={"user"}>前置鏡頭</option>
