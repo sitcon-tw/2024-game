@@ -37,6 +37,7 @@ function Scanner() {
 
         {currentCamera && (
           <QrReader
+            key={currentCamera}
             onResult={(result) => {
               if (!!result) {
                 // alert(data);
