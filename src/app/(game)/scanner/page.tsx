@@ -14,9 +14,21 @@ const page = () => {
           setResult(result);
         }}
       />
+      console.log(result);
 
-      {result && (
-        <InfoWindow msg="恭喜獲得一塊拼圖!!" onClose={() => setResult(null)} />
+      {result === "success" && (
+        <InfoWindow
+          title="已完成"
+          msg="恭喜獲得一塊拼圖!!"
+          onClose={() => setResult(null)}
+        />
+      )}
+      {result === "fail" && (
+        <InfoWindow
+          title="失敗"
+          msg="掃描失敗，請再試一次。"
+          onClose={() => setResult(null)}
+        />
       )}
     </>
   );

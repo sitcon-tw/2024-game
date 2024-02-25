@@ -1,4 +1,5 @@
 "use client";
+import { getBoothToken } from "@/lib/getBoothToken";
 import { useEffect, useState } from "react";
 import { QrReader } from "react-qr-reader";
 // Override console.error
@@ -39,11 +40,18 @@ function Scanner({ onResult }: { onResult: (result: string) => void }) {
       {currentCamera && (
         <QrReader
           key={currentCamera}
-          onResult={(result) => {
+          onResult={async (result) => {
             const text = result?.getText();
             if (text) {
               console.log(text);
-              onResult(text);
+              const boothToken = await getBoothToken(text);
+              console.log(boothToken);
+
+              if (boothToken) {
+                onResult("success");
+              } else {
+                onResult("fail");
+              }
             }
           }}
           constraints={{
