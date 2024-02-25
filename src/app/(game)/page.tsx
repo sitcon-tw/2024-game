@@ -2,7 +2,6 @@
 
 import { useDetail } from "@/components/Detail";
 import { Menu } from "@/components/Menu";
-import NonTokenModalContent from "@/components/NonTokenModalContent";
 import { activities, type ActivityType } from "@/data/activity";
 import { heading } from "@/varients/heading";
 import { text } from "@/varients/text";
@@ -56,14 +55,6 @@ export default function Home() {
   const finished = [[1, 2, 5], [1, 2], [4]][active]; // TODO: useFinished('session')
   const [filter, setFilter] = useState<Filter>("all");
   const [Detail, setOpen] = useDetail();
-  const [token, setToken] = useState("");
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, []);
 
   // This maybe need to be modified
   function isActivityFinished(activity: ActivityType, index: number) {
@@ -86,7 +77,6 @@ export default function Home() {
         active={active}
         setActive={setActive}
       />
-      {token ? <p>playerToken: {token}</p> : <NonTokenModalContent />}
 
       <div className="mx-8 my-8 flex flex-col gap-4">
         <div className="flex flex-col gap-1">
