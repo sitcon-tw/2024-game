@@ -5,6 +5,8 @@ import Scanner from "@/components/Scanner";
 
 import { InfoWindow } from "@/components/InfoWindow";
 import { getBoothToken } from "@/lib/getBoothToken";
+import { sendPuzzle2Player } from "@/lib/sendPuzzle2Player";
+import { invalidToken, puzzleSuccess, puzzleTaken } from "@/lib/const";
 
 function page() {
   const [result, setResult] = useState<string | null>(null);
@@ -17,8 +19,21 @@ function page() {
       var boothToken = await getBoothToken(result);
       setResult(null);
       if (boothToken) {
-        console.log(boothToken);
-        setInfo({ title: "已完成", msg: "恭喜獲得一塊拼圖!!" });
+        const playerToken = localStorage.getItem("token");
+        if (!playerToken) {
+          setInfo({ title: "失敗", msg: "請先報到。" });
+          setShowInfo(true);
+          return;
+        }
+        const result = await sendPuzzle2Player(playerToken, boothToken);
+        if (result === puzzleSuccess) {
+          setInfo({ title: "已完成", msg: "恭喜獲得一塊拼圖!!" });
+        } else if (result === puzzleTaken) {
+          setInfo({ title: "失敗", msg: "此拼圖已存在。" });
+        } else if (result === invalidToken) {
+          setInfo({ title: "失敗", msg: "請先報到。" });
+        }
+        console.log("sendPuzzle2Player", result);
       } else {
         setInfo({ title: "失敗", msg: "掃描失敗，請再試一次。" });
       }

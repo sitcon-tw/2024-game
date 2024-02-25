@@ -1,8 +1,10 @@
-import { API_URL } from "./const";
-
-const puzzleTaken = "Already take from this deliverer";
-const invalidToken = "invalid token";
-const invalidUser = "invalid receiver token";
+import {
+    API_URL,
+    invalidToken,
+    invalidUser,
+    puzzleSuccess,
+    puzzleTaken,
+} from "./const";
 
 export async function sendPuzzle2Player(
     playerToken: string,
@@ -17,9 +19,9 @@ export async function sendPuzzle2Player(
     })
         .then((res) => res.json())
         .then((data) => {
-            if (!data.message) return true;
-            else if (data.message === puzzleTaken) return true;
-            else if (data.message === invalidToken) return false;
+            if (!data.message) return puzzleSuccess;
+            else if (data.message === puzzleTaken) return puzzleTaken;
+            else if (data.message === invalidToken) return invalidToken;
             else if (data.message === invalidUser) throw new Error(invalidUser);
             else throw new Error("Unknown error", data);
         });
