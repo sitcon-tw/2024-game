@@ -24,7 +24,7 @@ export default function RootLayout({
         />
       </Head>
       <body>
-        <div className="mx-auto flex h-screen w-screen max-w-[768px] flex-col font-sans">
+        <div className="mx-auto flex h-[100svh] w-screen max-w-[768px] flex-col font-sans">
           <Nav />
           <div className="grow overflow-y-scroll">{children}</div>
           <Footer />
