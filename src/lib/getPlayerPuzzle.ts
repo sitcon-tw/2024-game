@@ -12,7 +12,16 @@ async function sha1(str: string) {
 
 export async function getPlayerPuzzle(playerToken: string) {
     return sha1(playerToken)
-    .then(publicToken => fetch(`${API_URL}/event/puzzle?token=${publicToken}`))
-    .then(res => res.json())
-    .then(data => data.puzzle.length as number)
+        .then((publicToken) =>
+            fetch(`${API_URL}/event/puzzle?token=${publicToken}`)
+        )
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            if (data.message && data.message.startsWith("Invalid token")) {
+                return data.message;
+            } else {
+                return data.puzzles.length as number;
+            }
+        });
 }
