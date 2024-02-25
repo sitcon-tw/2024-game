@@ -33,7 +33,6 @@ function page() {
         } else if (result === invalidToken) {
           setInfo({ title: "失敗", msg: "請先報到。" });
         }
-        console.log("sendPuzzle2Player", result);
       } else {
         setInfo({ title: "失敗", msg: "掃描失敗，請再試一次。" });
       }
