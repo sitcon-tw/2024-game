@@ -2,7 +2,7 @@
 
 import { useDetail } from "@/components/Detail";
 import { Menu } from "@/components/Menu";
-import { type ActivityType, activities } from "@/data/activity";
+import { activities, type ActivityType } from "@/data/activity";
 import { heading } from "@/varients/heading";
 import { text } from "@/varients/text";
 import { useState } from "react";
@@ -38,8 +38,8 @@ function Activity({
           fill={finished ? "#462002" : "#F8F3E8"}
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M0.416656 27C0.416656 12.3187 12.3187 0.416666 27 0.416666C41.6812 0.416666 53.5833 12.3187 53.5833 27C53.5833 41.6812 41.6812 53.5833 27 53.5833C12.3187 53.5833 0.416656 41.6812 0.416656 27ZM27 48.75C24.1437 48.75 21.3155 48.1874 18.6766 47.0944C16.0378 46.0013 13.6401 44.3992 11.6204 42.3796C9.60074 40.3599 7.99865 37.9622 6.90561 35.3234C5.81257 32.6845 5.24999 29.8562 5.24999 27C5.24999 24.1437 5.81257 21.3155 6.90561 18.6766C7.99865 16.0378 9.60074 13.6401 11.6204 11.6204C13.6401 9.60075 16.0378 7.99866 18.6766 6.90562C21.3155 5.81258 24.1437 5.25 27 5.25C32.7684 5.25 38.3006 7.54151 42.3796 11.6204C46.4585 15.6993 48.75 21.2315 48.75 27C48.75 32.7685 46.4585 38.3006 42.3796 42.3796C38.3006 46.4585 32.7684 48.75 27 48.75Z"
           fill={finished ? "#462002" : "#F8F3E8"}
         />
@@ -67,9 +67,8 @@ export default function Home() {
   }));
 
   const totalN = data.filter((item) => item.isFinished || !item.hide).length;
-  const finishedN = data.filter((item, index) =>
-    isActivityFinished(item, index),
-  ).length;
+  const finishedN =
+    data.filter((item, index) => isActivityFinished(item, index)).length;
 
   return (
     <div>
