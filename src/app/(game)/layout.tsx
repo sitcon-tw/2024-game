@@ -1,15 +1,22 @@
+"use client";
 import Head from "next/head";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
 import "../globals.css";
 import NonTokenModalContent from "@/components/NonTokenModalContent";
+import { useEffect, useState } from "react";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
   return (
     <html lang="zh-TW">
       <Head>
@@ -27,7 +34,7 @@ export default function RootLayout({
       <body>
         <div className="mx-auto flex h-[100svh] w-screen max-w-[768px] flex-col font-sans">
           <Nav />
-          {typeof window !== "undefined" && localStorage.getItem("token")
+          {mounted && localStorage.getItem("token")
             ? <p>playerToken: {localStorage.getItem("token")}</p>
             : <NonTokenModalContent />}
           <div className="grow overflow-y-scroll">{children}</div>
