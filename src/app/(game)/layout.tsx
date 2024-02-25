@@ -23,10 +23,12 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </Head>
-      <body className="flex min-h-screen w-screen flex-col font-sans">
-        <Nav />
-        <div className="grow">{children}</div>
-        <Footer />
+      <body>
+        <div className="mx-auto flex h-screen w-screen max-w-[768px] flex-col font-sans">
+          <Nav />
+          <div className="grow overflow-y-scroll">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
