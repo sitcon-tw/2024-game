@@ -8,7 +8,7 @@ import { getBoothToken } from "@/lib/getBoothToken";
 import { sendPuzzle2Player } from "@/lib/sendPuzzle2Player";
 import { invalidToken, puzzleSuccess, puzzleTaken } from "@/lib/const";
 
-function page() {
+export default function Page() {
   const [result, setResult] = useState<string | null>(null);
   const [info, setInfo] = useState({ title: "", msg: "" });
   const [showInfo, setShowInfo] = useState(false);
@@ -60,5 +60,3 @@ function page() {
     </>
   );
 }
-
-export default page;

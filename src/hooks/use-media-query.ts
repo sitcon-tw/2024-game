@@ -4,12 +4,10 @@ export default function useMediaQuery() {
   const [device, setDevice] = useState<"mobile" | "tablet" | "desktop" | null>(
     null,
   );
-  const [dimensions, setDimensions] = useState<
-    {
-      width: number;
-      height: number;
-    } | null
-  >(null);
+  const [dimensions, setDimensions] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
 
   useEffect(() => {
     const checkDevice = () => {
