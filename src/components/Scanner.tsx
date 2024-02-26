@@ -13,11 +13,27 @@ function Scanner({ onResult }: { onResult: (result: string) => void }) {
     getUserCameraList();
   }, []);
   async function getUserCameraList() {
-    await navigator.mediaDevices.getUserMedia({ audio: false, video: true });
+    await navigator.mediaDevices.getUserMedia({
+      audio: false,
+      video: true,
+    });
+
     let devices = await navigator.mediaDevices.enumerateDevices();
     devices = devices.filter((device) => device.kind == "videoinput");
+
     setCameras(devices);
-    setCurrentCamera(devices[0].deviceId);
+    try {
+      setCurrentCamera(
+        devices.filter(
+          (device) =>
+            //@ts-ignore
+            device.getCapabilities()?.facingMode?.[0] === "environment",
+        )[0].deviceId ?? devices[0].deviceId,
+      );
+    } catch (e) {
+      console.log(e);
+      setCurrentCamera(devices[0].deviceId);
+    }
   }
   const [cameras, setCameras] = useState<MediaDeviceInfo[]>([]);
   const [currentCamera, setCurrentCamera] = useState<string | null>(null);
