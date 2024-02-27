@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [isClient, setIsClient] = useState(false);
-  const token = useReadLocalStorage("token");
+  const token: string | null = useReadLocalStorage("token");
   useEffect(() => {
     setIsClient(true);
   }, []);
