@@ -34,7 +34,7 @@ const NonTokenModalContent = () => {
     <div>
       <Dialog open={isModalOpen} setOpen={setModalOpen}>
         <div className="flex flex-col gap-4 break-all p-6">
-          <p className="mt-0">
+          <p className="mt-0 font-bold text-1xl">
             請檢查 OPass 是否已成功報到，或透過下列方式進入遊戲。
           </p>
           <div className="flex flex-col">
@@ -45,7 +45,7 @@ const NonTokenModalContent = () => {
               <div className="flex items-center">
                 <i className="bx bxs-keyboard text-4xl"></i>
                 <div className="ml-4">
-                  <div className="font-bold">手動輸入票券代碼</div>
+                  <div>手動輸入票券代碼</div>
                 </div>
               </div>
             </div>
@@ -56,7 +56,7 @@ const NonTokenModalContent = () => {
               <div className="flex items-center">
                 <i className="bx bx-qr-scan text-4xl"></i>
                 <div className="ml-4">
-                  <div className="font-bold">掃描票券 QR Code</div>
+                  <div>掃描票券 QR Code</div>
                 </div>
               </div>
             </div>

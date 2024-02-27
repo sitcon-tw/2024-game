@@ -17,7 +17,7 @@ export function useDetail() {
       return (
         <Dialog open={open} setOpen={setOpen}>
           <div className="flex flex-col gap-4 break-all p-6">
-            <h1 className="font-bold text-[#B1884C]">
+            <h1 className="font-bold text-[#B1884C] text-2xl">
               {activity?.name}
             </h1>
             {Array.isArray(activity?.description) &&
