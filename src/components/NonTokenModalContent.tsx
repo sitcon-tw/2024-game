@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Dialog from "./Dialog";
 import Scanner from "./Scanner";
 import { getPlayerPuzzle } from "@/lib/getPlayerPuzzle";
+import { useLocalStorage } from "usehooks-ts";
 
 const NonTokenModalContent = () => {
   const [isModalOpen, setModalOpen] = useState(true);
@@ -10,16 +11,16 @@ const NonTokenModalContent = () => {
   const [scanQRCodeModal, setScanQRCodeModal] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState("");
   const [result, setResult] = useState<string | null>(null);
+  const [token, setToken] = useLocalStorage("token", "");
 
   useEffect(() => {
     const handleLogin = async () => {
-      console.log(result);
       if (typeof result !== "string") return;
       var puzzle = await getPlayerPuzzle(result);
       setResult(null);
       if (puzzle !== "Invalid token, please try again after checkin.") {
         console.log(puzzle);
-        localStorage.setItem("token", result);
+        setToken(() => result);
         // setModalOpen(false);
       } else {
         setModalOpen(true);

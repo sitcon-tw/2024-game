@@ -2,6 +2,7 @@
 import Head from "next/head";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { useReadLocalStorage } from "usehooks-ts";
 
 import "../globals.css";
 import NonTokenModalContent from "@/components/NonTokenModalContent";
@@ -12,11 +13,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [mounted, setMounted] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  const token = useReadLocalStorage("token");
   useEffect(() => {
-    setMounted(true);
-    return () => setMounted(false);
+    setIsClient(true);
   }, []);
+
   return (
     <html lang="zh-TW">
       <Head>
@@ -34,8 +36,8 @@ export default function RootLayout({
       <body>
         <div className="mx-auto flex h-[100svh] w-screen max-w-[768px] flex-col font-sans">
           <Nav />
-          {mounted && localStorage.getItem("token")
-            ? <p>playerToken: {localStorage.getItem("token")}</p>
+          {isClient && token
+            ? <div>playerToken: {token}</div>
             : <NonTokenModalContent />}
           <div className="grow overflow-y-scroll">{children}</div>
           <Footer />

@@ -6,12 +6,14 @@ import Scanner from "@/components/Scanner";
 import { InfoWindow } from "@/components/InfoWindow";
 import { getBoothToken } from "@/lib/getBoothToken";
 import { sendPuzzle2Player } from "@/lib/sendPuzzle2Player";
+import { useReadLocalStorage } from "usehooks-ts";
 import { invalidToken, puzzleSuccess, puzzleTaken } from "@/lib/const";
 
 export default function Page() {
   const [result, setResult] = useState<string | null>(null);
   const [info, setInfo] = useState({ title: "", msg: "" });
   const [showInfo, setShowInfo] = useState(false);
+  const playerToken: string | null = useReadLocalStorage("token");
 
   useEffect(() => {
     const handleResult = async () => {
@@ -19,7 +21,6 @@ export default function Page() {
       var boothToken = await getBoothToken(result);
       setResult(null);
       if (boothToken) {
-        const playerToken = localStorage.getItem("token");
         if (!playerToken) {
           setInfo({ title: "失敗", msg: "請先報到。" });
           setShowInfo(true);
