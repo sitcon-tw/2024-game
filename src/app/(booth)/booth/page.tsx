@@ -21,7 +21,7 @@ export default function Page() {
           boothToken,
         );
         if (boothName === null) {
-          const boothName = await getBoothName(boothToken);
+          const boothName = (await getBoothName(boothToken))?.slug;
           setBoothName(boothName ? boothName : "（攤位不存在）");
         }
       }
