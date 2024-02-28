@@ -24,7 +24,7 @@ export function Window({ title, content, isOpen, close }: Props) {
           onClick={(e) => e.stopPropagation()}
         >
           <h2 className={heading({ level: 2 })}>{title}</h2>
-          <h4 className={heading({ level: 4 })}>{content}</h4>
+          <div className="overflow-scroll">{content}</div>
         </div>
         <button className="grid h-10 w-10 place-items-center rounded-full bg-[#BDBDBD]">
           <svg
