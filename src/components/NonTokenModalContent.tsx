@@ -16,16 +16,17 @@ const NonTokenModalContent = () => {
   useEffect(() => {
     const handleLogin = async () => {
       if (typeof result !== "string") return;
-      var puzzle = await getPlayerPuzzle(result);
+      getPlayerPuzzle(result)
+        .then((puzzle) => {
+          console.log(puzzle);
+          setToken(() => result);
+          // setModalOpen(false);
+        })
+        .catch(() => {
+          setModalOpen(true);
+          alert("驗證失敗，請再試一次。");
+        });
       setResult(null);
-      if (puzzle !== "Invalid token, please try again after checkin.") {
-        console.log(puzzle);
-        setToken(() => result);
-        // setModalOpen(false);
-      } else {
-        setModalOpen(true);
-        alert("驗證失敗，請再試一次。");
-      }
     };
     handleLogin();
   });
@@ -34,12 +35,12 @@ const NonTokenModalContent = () => {
     <div>
       <Dialog open={isModalOpen} setOpen={setModalOpen}>
         <div className="flex flex-col gap-4 break-all p-6">
-          <p className="mt-0 font-bold text-1xl">
+          <p className="text-1xl mt-0 font-bold">
             請檢查 OPass 是否已成功報到，或透過下列方式進入遊戲。
           </p>
           <div className="flex flex-col">
             <div
-              className="cursor-pointer p-4 m-2 border rounded shadow-lg"
+              className="m-2 cursor-pointer rounded border p-4 shadow-lg"
               onClick={() => setManualInputModal(true)}
             >
               <div className="flex items-center">
@@ -50,7 +51,7 @@ const NonTokenModalContent = () => {
               </div>
             </div>
             <div
-              className="cursor-pointer p-4 m-2 border rounded shadow-lg"
+              className="m-2 cursor-pointer rounded border p-4 shadow-lg"
               onClick={() => setScanQRCodeModal(true)}
             >
               <div className="flex items-center">
@@ -62,29 +63,26 @@ const NonTokenModalContent = () => {
             </div>
           </div>
 
-          <Dialog
-            open={manualInputModal}
-            setOpen={setManualInputModal}
-          >
+          <Dialog open={manualInputModal} setOpen={setManualInputModal}>
             <div className="flex flex-col gap-4 break-all p-6">
               <div>手動輸入票券代碼</div>
               <div>
                 <p className="mt-0">請輸入 OPass 票券代碼</p>
                 <input
-                  className="input border m-2 p-2"
+                  className="input m-2 border p-2"
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="請輸入票券代碼"
                 />
               </div>
               <div>
                 <button
-                  className="m-2 p-2 border"
+                  className="m-2 border p-2"
                   onClick={() => setManualInputModal(false)}
                 >
                   取消
                 </button>
                 <button
-                  className="m-2 p-2 border bg-blue-500 text-white"
+                  className="m-2 border bg-blue-500 p-2 text-white"
                   onClick={() => {
                     setResult(inputValue);
                     setModalOpen(false);
@@ -96,10 +94,7 @@ const NonTokenModalContent = () => {
             </div>
           </Dialog>
 
-          <Dialog
-            open={scanQRCodeModal}
-            setOpen={setScanQRCodeModal}
-          >
+          <Dialog open={scanQRCodeModal} setOpen={setScanQRCodeModal}>
             <div className="flex flex-col gap-4 break-all p-6">
               <div>掃描票券 QR Code</div>
               <div>
@@ -118,7 +113,7 @@ const NonTokenModalContent = () => {
                 />
               </div>
               <button
-                className="m-2 p-2 border"
+                className="m-2 border p-2"
                 onClick={() => setScanQRCodeModal(false)}
               >
                 取消

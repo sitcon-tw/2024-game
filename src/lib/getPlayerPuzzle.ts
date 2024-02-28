@@ -10,18 +10,29 @@ async function sha1(str: string) {
     return digest;
 }
 
+export type PlayerData = {
+    cuppon: null; // IDK what this is
+    deliverers: {
+        deliverer: string;
+        timestamp: number;
+    }[];
+    puzzles: string[];
+    user_id: string;
+    valid: null; // IDK what this is
+};
+
 export async function getPlayerPuzzle(playerToken: string) {
     return sha1(playerToken)
         .then((publicToken) =>
-            fetch(`${API_URL}/event/puzzle?token=${publicToken}`)
+            fetch(`${API_URL}/event/puzzle?token=${publicToken}`),
         )
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.message && data.message.startsWith("Invalid token")) {
-                return data.message;
+                throw data.message;
             } else {
-                return data
+                return data as PlayerData;
             }
         });
 }
