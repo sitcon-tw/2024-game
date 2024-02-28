@@ -21,7 +21,7 @@ export async function getPlayerPuzzle(playerToken: string) {
             if (data.message && data.message.startsWith("Invalid token")) {
                 return data.message;
             } else {
-                return data.puzzles.length as number;
+                return data
             }
         });
 }

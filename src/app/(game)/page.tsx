@@ -3,11 +3,13 @@
 import { useDetail } from "@/components/Detail";
 import { Menu } from "@/components/Menu";
 import { activities, type ActivityType } from "@/data/activity";
+import { useFinished } from "@/hooks/useFinished";
 import { heading } from "@/varients/heading";
 import { text } from "@/varients/text";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { useLocalStorage } from "usehooks-ts";
 
 function Activity({
   activity,
@@ -99,13 +101,15 @@ const menus = [
 
 export default function Home() {
   const [active, setActive] = useState(0);
-  const finished = [[1, 2, 5], [1, 2], [4]][active]; // TODO: useFinished('session')
   const [filter, setFilter] = useState<Filter>("all");
   const [Detail, setOpen] = useDetail();
+  const finishedList = useFinished(useLocalStorage("token", "")[0]);
 
   // This maybe need to be modified
   function isActivityFinished(activity: ActivityType, index: number) {
-    return finished.includes(index);
+    const finished = finishedList.includes(activity.name);
+    // console.log(activity.name, finished);
+    return finished;
   }
 
   const data = activities[active].map((item, index) => ({
@@ -129,7 +133,7 @@ export default function Home() {
       <div className="mx-8 my-8 flex flex-col gap-4">
         <div className="flex flex-col gap-1">
           <h5 className={heading({ level: 5 })}>如何完成任務?</h5>
-          <p className={text({ level: 3 })}>{menus[active].description}</p>
+          <div className={text({ level: 3 })}>{menus[active].description}</div>
         </div>
 
         <div className="flex items-center gap-3">
