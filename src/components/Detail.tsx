@@ -17,6 +17,9 @@ export function useDetail() {
       return (
         <Dialog open={open} setOpen={setOpen}>
           <div className="flex flex-col gap-4 break-all p-6">
+            <h2 className="flex h-10 items-center justify-center rounded bg-[#B1884C] text-center text-2xl tabular-nums text-white">
+              {activity?.piece} 塊拼圖
+            </h2>
             <h1 className="font-bold text-[#B1884C] text-2xl">
               {activity?.name}
             </h1>
