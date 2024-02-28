@@ -28,7 +28,7 @@ export default function Page() {
         }
         const result = await sendPuzzle2Player(playerToken, boothToken);
         if (result === puzzleSuccess) {
-          setInfo({ title: "已完成", msg: "恭喜獲得一塊拼圖!!" });
+          setInfo({ title: "已完成", msg: "恭喜獲得拼圖!!" });
         } else if (result === puzzleTaken) {
           setInfo({ title: "失敗", msg: "此拼圖已存在。" });
         } else if (result === invalidToken) {
