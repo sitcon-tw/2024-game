@@ -8,9 +8,6 @@ export function useFinished(token: string) {
 
     useEffect(() => {
         getPlayerPuzzle(token).then((data) => {
-            if (data == "Invalid token, please try again after checkin.") {
-                return;
-            }
             setFinished(data.deliverers.map((d: any) => d.deliverer));
         });
     }, [token]);
