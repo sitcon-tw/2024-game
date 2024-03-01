@@ -11,8 +11,9 @@ export default function Page() {
         active={active}
         setActive={setActive}
       />
-      <Puzzle src="/meme/meme-1.jpg" done={[2, 4, 5, 7]} size="3x3" />
-      <Puzzle src="/meme/meme-2.jpg" done={[3, 12, 9, 7]} size="4x4" />
+      {active === 0 ? <Puzzle src="/meme/meme-1.jpg" done={[2, 4, 5, 7]} size="3x3" /> : (active === 1 ? <Puzzle src="/meme/meme-2.jpg" done={[3, 12, 9, 7]} size="4x4" /> : null)}
+      {/* <Puzzle src="/meme/meme-1.jpg" done={[2, 4, 5, 7]} size="3x3" /> */}
+      
     </div>
   );
 }
