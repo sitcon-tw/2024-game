@@ -1,7 +1,7 @@
 "use client";
 import { Menu } from "@/components/Menu";
 import { useState } from "react";
-
+import Puzzle from "@/components/Puzzle";
 export default function Page() {
   const [active, setActive] = useState(0);
   return (
@@ -11,6 +11,8 @@ export default function Page() {
         active={active}
         setActive={setActive}
       />
+      <Puzzle src="/meme/meme-1.jpg" done={[2, 4, 5, 7]} size="3x3" />
+      <Puzzle src="/meme/meme-2.jpg" done={[3, 12, 9, 7]} size="4x4" />
     </div>
   );
 }
