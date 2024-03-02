@@ -13,7 +13,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between bg-sitcon-color8 px-8 py-6">
+    <nav className="flex items-center justify-between bg-sitcon-color8 px-2 py-4">
       <h1 className="bg-gradient-to-r from-[#385AACCC] via-[#946E34BF] via-60% to-[#462002] bg-clip-text text-3xl font-bold text-transparent">
         SITCON 2024
       </h1>
@@ -36,7 +36,7 @@ export function Nav() {
 
 function Rule() {
   return (
-    <div className="px-16 py-2 flex flex-col gap-4">
+    <div className="flex flex-col gap-4 px-16 py-2">
       <p className={text({ level: 1 })}>
         今年的大地遊戲，我們將 SITCON 2024
         諸多年會相關活動都融合進了「迷因拼圖」遊戲中，邀請您來一同邊玩邊探索，解鎖所有活動體驗！
@@ -67,7 +67,7 @@ function Rule() {
         完成越多任務、中獎機率越高！快點開始遊戲吧 {"(ﾉ>ω<)ﾉ"}
       </b>
       <b className={text({ level: 1, bold: true })}>重要時間戳記及地點：</b>
-      <div className="gap-[1px] border border-black bg-black grid grid-cols-3 w-fit">
+      <div className="grid w-fit grid-cols-3 gap-[1px] border border-black bg-black">
         <Cell></Cell>
         <Cell>時間</Cell>
         <Cell>地點</Cell>
@@ -85,7 +85,9 @@ function Rule() {
         <Cell>16：00～16：50</Cell>
         <Cell>3F 講者服務台</Cell>
       </div>
-      <p className={text({ level: 1})}>若有任何問題，歡迎於 13：00 後至 3F 講者服務台詢問現場工作人員。</p>
+      <p className={text({ level: 1 })}>
+        若有任何問題，歡迎於 13：00 後至 3F 講者服務台詢問現場工作人員。
+      </p>
     </div>
   );
 }
