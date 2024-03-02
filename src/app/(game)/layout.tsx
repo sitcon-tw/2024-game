@@ -36,11 +36,7 @@ export default function RootLayout({
       <body>
         <div className="mx-auto flex h-[100svh] w-screen max-w-[768px] flex-col font-sans text-gray-950">
           <Nav />
-          {isClient && token ? (
-            <div>playerToken: {token}</div>
-          ) : (
-            <NonTokenModalContent />
-          )}
+          {!token && isClient && <NonTokenModalContent />}
           <div className="grow overflow-y-scroll">{children}</div>
           <Footer />
         </div>
