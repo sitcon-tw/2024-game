@@ -23,8 +23,8 @@ function Activity({
   return (
     <div
       className={twMerge(
-        "flex items-center justify-between gap-4 break-all rounded-2xl px-4 py-2 shadow-[1px_3px_6px_0px_#0000001A]",
-        finished ? "bg-sitcon-secondary" : "border border-sitcon-secondary",
+        "flex items-center justify-between gap-4 break-all rounded-2xl border border-sitcon-secondary px-4 py-2 shadow-[1px_3px_6px_0px_#0000001A]",
+        finished ? "bg-sitcon-secondary" : "",
       )}
       onClick={() => setOpen(activity)}
     >
