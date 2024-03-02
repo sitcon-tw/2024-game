@@ -6,24 +6,38 @@ import { useFinished } from "@/hooks/useFinished";
 import { useLocalStorage } from "usehooks-ts";
 import { twMerge } from "tailwind-merge";
 import { activities, type ActivityType } from "@/data/activity";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Circle, Ticket } from "lucide-react";
 import Dialog from "@/components/Dialog";
 function sum(a: number, b: ActivityType) {
   return a + b.piece;
 }
-function Ticket({ isDone, num }: { isDone: boolean; num: number }) {
+function TicketItem({ isDone, num }: { isDone: boolean; num: number }) {
   return (
     <div
       className={twMerge(
-        "break-all rounded-xl border border-sitcon-secondary p-3 text-left shadow-sm",
+        "flex items-center gap-2 break-all rounded-xl border border-sitcon-secondary p-3 text-left shadow-sm",
         isDone
-          ? "bg-sitcon-secondary  text-[#462002]"
-          : "border-opacity-50 text-sitcon-secondary/50",
+          ? "bg-sitcon-secondary text-[#462002]"
+          : "border-opacity-50 bg-white",
       )}
     >
-      <CheckCircle2 size={48} strokeWidth={2} className={twMerge("shrink-0")} />
-      <div className="mt-2 text-xl font-bold">抽獎券</div>
-      <div className="text-base font-normal">完成拼圖 {num} 即可獲得</div>
+      {isDone ? (
+        <CheckCircle2
+          size={48}
+          strokeWidth={2}
+          className={twMerge("shrink-0")}
+        />
+      ) : (
+        <Circle
+          size={48}
+          strokeWidth={2}
+          className={twMerge("shrink-0 text-[#F8F3E8]")}
+        />
+      )}
+      <div>
+        <div className="text-xl font-bold">抽獎券</div>
+        <div className="text-base font-normal">完成拼圖 {num} 即可獲得</div>
+      </div>
     </div>
   );
 }
@@ -39,7 +53,10 @@ function TicketRules() {
       </button>
       <Dialog open={show} setOpen={setShow}>
         <div className="p-6">
-          <div className="text-2xl font-bold">抽獎活動說明</div>
+          <div className="mb-4 flex flex-col items-center justify-center gap-2 text-center tracking-wider">
+            <Ticket strokeWidth={2} size={48} />
+            <h1 className="text-2xl font-bold">抽獎活動說明</h1>
+          </div>
           本活動開放所有與會朋友一同參與，歡迎您在下午 3 點 55 分至 R0
           參與抽獎過程，屆時將由工作人員現場抽出 12
           位幸運朋友，於公布中獎名單後將中獎序號推播到 OPass
@@ -103,9 +120,9 @@ export default function Page() {
           <TicketRules />
         </div>
         <div className="my-2 grid gap-2 md:grid-cols-3">
-          <Ticket isDone={finishedN >= 9} num={1} />
-          <Ticket isDone={finishedN >= 25} num={2} />
-          <Ticket isDone={finishedN >= 41} num={3} />
+          <TicketItem isDone={finishedN >= 9} num={1} />
+          <TicketItem isDone={finishedN >= 25} num={2} />
+          <TicketItem isDone={finishedN >= 41} num={3} />
         </div>
       </div>
     </div>

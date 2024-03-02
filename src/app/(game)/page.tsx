@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useLocalStorage } from "usehooks-ts";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Circle } from "lucide-react";
 
 function Activity({
   activity,
@@ -25,18 +25,19 @@ function Activity({
     <div
       className={twMerge(
         "flex items-center justify-start gap-4 break-all rounded-xl border border-sitcon-secondary p-2 text-left shadow-sm",
-        finished ? "bg-sitcon-secondary" : "border-opacity-50",
+        finished ? "bg-sitcon-secondary" : "border-opacity-50 bg-white",
       )}
       onClick={() => setOpen(activity)}
     >
-      <CheckCircle2
-        size={48}
-        strokeWidth={2}
-        className={twMerge(
-          "shrink-0",
-          finished ? "text-[#462002]" : "text-[#F8F3E8]",
-        )}
-      />
+      {finished ? (
+        <CheckCircle2
+          size={48}
+          strokeWidth={2}
+          className="shrink-0 text-[#462002]"
+        />
+      ) : (
+        <Circle size={48} strokeWidth={2} className="shrink-0 text-[#F8F3E8]" />
+      )}
       <p className={text({ level: 1 })}>{activity.name}</p>
     </div>
   );
@@ -64,7 +65,7 @@ const menus = [
         邁開您的腳步，來一一踩點{" "}
         <Link
           href="https://sitcon.org/2024/events/"
-          className="text-blue-500 underline hover:underline-offset-2"
+          className="text-[#B1884C] underline hover:underline-offset-2"
         >
           SITCON 2024 各大年會活動
         </Link>{" "}
@@ -125,8 +126,10 @@ export default function Home() {
       />
 
       <div className="mx-2 my-8 flex flex-col gap-4">
-        <div className="flex flex-col gap-1">
-          <h5 className={heading({ level: 5 })}>如何完成任務?</h5>
+        <div className="flex flex-col gap-1 rounded-xl bg-white p-4 shadow-sm">
+          <h5 className={twMerge(heading({ level: 5 }), "text-[#B1884C]")}>
+            如何完成任務？
+          </h5>
           <div className={text({ level: 3 })}>{menus[active].description}</div>
         </div>
 
@@ -146,9 +149,9 @@ export default function Home() {
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value as Filter)}
-            className="h-10 w-24 rounded-md border-2 border-sitcon-secondary bg-sitcon-white px-3 py-[6px]"
+            className="h-10 w-24 rounded-xl border-2 border-sitcon-secondary bg-sitcon-white px-3 py-[6px]"
           >
-            <option value="all">ALL</option>
+            <option value="all">全部</option>
             <option value="finished">已完成</option>
             <option value="unfinished">未完成</option>
           </select>

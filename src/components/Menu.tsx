@@ -13,7 +13,7 @@ export function Menu({ texts, active, setActive }: Props) {
   return (
     <div className="grid grid-cols-3">
       {texts.map((text, index) => (
-        <div
+        <button
           key={index}
           onClick={() => setActive(index)}
           className={twMerge(
@@ -23,7 +23,7 @@ export function Menu({ texts, active, setActive }: Props) {
           )}
         >
           <h4 className={heading({ level: 4 })}>{text}</h4>
-        </div>
+        </button>
       ))}
     </div>
   );

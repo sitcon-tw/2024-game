@@ -12,7 +12,7 @@ export default function Puzzle({
     <div className="w-full p-2">
       <div
         className={twMerge(
-          "grid aspect-square overflow-hidden rounded-md border-4 border-gray-200",
+          "grid aspect-square overflow-hidden rounded-xl border border-[#ffe8c4] shadow-sm",
           size === "3x3" ? "grid-cols-3" : "grid-cols-4",
         )}
         style={{
