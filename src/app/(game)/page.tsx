@@ -35,6 +35,7 @@ function Activity({
         viewBox="0 0 54 54"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className="shrink-0"
       >
         <path
           d="M22.7539 37.4255L12.5 27.1692L15.9172 23.752L22.7539 30.5863L36.4226 16.9153L39.8422 20.3348L22.7539 37.4255Z"
