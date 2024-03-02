@@ -1,13 +1,10 @@
 "use client";
-
 import Image from "next/image";
 import book from "@/img/book.svg";
 import { heading } from "@/varients/heading";
 import { useState } from "react";
-import { Window } from "./Window";
 import { text } from "@/varients/text";
-
-// TODO: window
+import Dialog from "./Dialog";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -24,19 +21,18 @@ export function Nav() {
         <Image src={book} width={20} height={22} alt="" />
         <h3 className={heading({ level: 3 })}>規則</h3>
       </div>
-      <Window
-        title="規則"
-        content={<Rule />}
-        isOpen={open}
-        close={() => setOpen(false)}
-      />
+
+      <Dialog open={open} setOpen={setOpen}>
+        <Rule />
+      </Dialog>
     </nav>
   );
 }
 
 function Rule() {
   return (
-    <div className="flex flex-col gap-4 px-16 py-2">
+    <div className="flex flex-col gap-4 px-4 py-2">
+      <h1 className={heading({ level: 1 })}>迷因拼圖</h1>
       <p className={text({ level: 1 })}>
         今年的大地遊戲，我們將 SITCON 2024
         諸多年會相關活動都融合進了「迷因拼圖」遊戲中，邀請您來一同邊玩邊探索，解鎖所有活動體驗！
@@ -67,7 +63,7 @@ function Rule() {
         完成越多任務、中獎機率越高！快點開始遊戲吧 {"(ﾉ>ω<)ﾉ"}
       </b>
       <b className={text({ level: 1, bold: true })}>重要時間戳記及地點：</b>
-      <div className="grid w-fit grid-cols-3 gap-[1px] border border-black bg-black">
+      <div className="grid w-fit grid-cols-3 gap-[1px] border border-gray-400 bg-gray-400">
         <Cell></Cell>
         <Cell>時間</Cell>
         <Cell>地點</Cell>
