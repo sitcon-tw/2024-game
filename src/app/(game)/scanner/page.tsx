@@ -26,13 +26,18 @@ export default function Page() {
           setShowInfo(true);
           return;
         }
-        const result = await sendPuzzle2Player(playerToken, boothToken);
-        if (result === puzzleSuccess) {
-          setInfo({ title: "已完成", msg: "恭喜獲得拼圖!!" });
-        } else if (result === puzzleTaken) {
-          setInfo({ title: "失敗", msg: "此拼圖已存在。" });
-        } else if (result === invalidToken) {
-          setInfo({ title: "失敗", msg: "請先報到。" });
+        try {
+          const result = await sendPuzzle2Player(playerToken, boothToken);
+          if (result === puzzleSuccess) {
+            setInfo({ title: "已完成", msg: "恭喜獲得拼圖!!" });
+          } else if (result === puzzleTaken) {
+            setInfo({ title: "失敗", msg: "此拼圖已存在。" });
+          } else if (result === invalidToken) {
+            setInfo({ title: "失敗", msg: "請先報到。" });
+          }
+        } catch (e) {
+          console.error(e);
+          setInfo({ title: "失敗", msg: "無法兌換此拼圖" });
         }
       } else {
         setInfo({ title: "失敗", msg: "掃描失敗，請再試一次。" });
