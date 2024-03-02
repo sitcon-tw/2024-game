@@ -15,6 +15,7 @@ export default function Page() {
   const playerToken: string | null = useReadLocalStorage("token");
   useEffect(() => {
     async function handleResult() {
+      if (showInfo) return;
       if (typeof result !== "string") return;
       let boothToken = await getBoothToken(result);
       setResult(null);
