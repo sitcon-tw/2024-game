@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Scanner from "@/components/Scanner";
-import { useRouter } from "next/router";
 import { InfoWindow } from "@/components/InfoWindow";
 import { getBoothToken } from "@/lib/getBoothToken";
 import { sendPuzzle2Player } from "@/lib/sendPuzzle2Player";
