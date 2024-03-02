@@ -23,7 +23,7 @@ function Activity({
   return (
     <div
       className={twMerge(
-        "flex flex-col items-center gap-4 break-all rounded-2xl px-2 py-4 text-center shadow-[1px_3px_6px_0px_#0000001A]",
+        "flex items-center justify-between gap-4 break-all rounded-2xl px-4 py-2 shadow-[1px_3px_6px_0px_#0000001A]",
         finished ? "bg-sitcon-secondary" : "border border-sitcon-secondary",
       )}
       onClick={() => setOpen(activity)}
@@ -92,7 +92,6 @@ const menus = [
         今天，請和我們一起探險、一起玩耍、一起收穫更多驚喜 ☆ﾐ(o*･ω･)ﾉ
       </p>,
       <p key="bonus-3">
-        {" "}
         依照各別活動說明中的提示完成任務，即可獲得其對應之拼圖獎勵。
       </p>,
     ],
@@ -130,7 +129,7 @@ export default function Home() {
         setActive={setActive}
       />
 
-      <div className="mx-8 my-8 flex flex-col gap-4">
+      <div className="mx-2 my-8 flex flex-col gap-4">
         <div className="flex flex-col gap-1">
           <h5 className={heading({ level: 5 })}>如何完成任務?</h5>
           <div className={text({ level: 3 })}>{menus[active].description}</div>
@@ -160,7 +159,7 @@ export default function Home() {
           </select>
         </div>
 
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid gap-4 md:grid-cols-2">
           {data
             .filter((item) => {
               if (filter === "all") return true;
