@@ -18,7 +18,7 @@ function NavLink({
     <Link
       href={href}
       className={twMerge(
-        "flex h-16 flex-col items-center justify-between",
+        "flex h-16 flex-col items-center justify-between tracking-wider",
         text({ level: 2, bold: true }),
         pathname !== href && "opacity-60",
       )}

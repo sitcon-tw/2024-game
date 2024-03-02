@@ -43,7 +43,7 @@ function Scanner({ onResult }: { onResult: (result: string) => void }) {
       <select
         onChange={(e) => setCurrentCamera(e.target.value)}
         value={currentCamera || ""}
-        className="absolute left-0 right-0 top-4 z-10 m-auto w-[256px] rounded-md border border-gray-300 bg-white p-2 shadow-md"
+        className="absolute left-0 right-0 top-4 z-[1] m-auto w-[256px] rounded-md bg-white/75 p-2 shadow-md outline-0 backdrop-blur-lg"
       >
         {cameras.map((camera) => (
           <option key={camera.deviceId} value={camera.deviceId}>

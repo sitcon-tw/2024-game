@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useLocalStorage } from "usehooks-ts";
+import { CheckCircle2 } from "lucide-react";
 
 function Activity({
   activity,
@@ -23,31 +24,20 @@ function Activity({
   return (
     <div
       className={twMerge(
-        "flex items-center justify-between gap-4 break-all rounded-2xl border border-sitcon-secondary px-4 py-2 shadow-[1px_3px_6px_0px_#0000001A]",
-        finished ? "bg-sitcon-secondary" : "",
+        "flex items-center justify-start gap-4 break-all rounded-xl border border-sitcon-secondary p-2 text-left shadow-sm",
+        finished ? "bg-sitcon-secondary" : "border-opacity-50",
       )}
       onClick={() => setOpen(activity)}
     >
+      <CheckCircle2
+        size={48}
+        strokeWidth={2}
+        className={twMerge(
+          "shrink-0",
+          finished ? "text-[#462002]" : "text-[#F8F3E8]",
+        )}
+      />
       <p className={text({ level: 1 })}>{activity.name}</p>
-      <svg
-        width="54"
-        height="54"
-        viewBox="0 0 54 54"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="shrink-0"
-      >
-        <path
-          d="M22.7539 37.4255L12.5 27.1692L15.9172 23.752L22.7539 30.5863L36.4226 16.9153L39.8422 20.3348L22.7539 37.4255Z"
-          fill={finished ? "#462002" : "#F8F3E8"}
-        />
-        <path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M0.416656 27C0.416656 12.3187 12.3187 0.416666 27 0.416666C41.6812 0.416666 53.5833 12.3187 53.5833 27C53.5833 41.6812 41.6812 53.5833 27 53.5833C12.3187 53.5833 0.416656 41.6812 0.416656 27ZM27 48.75C24.1437 48.75 21.3155 48.1874 18.6766 47.0944C16.0378 46.0013 13.6401 44.3992 11.6204 42.3796C9.60074 40.3599 7.99865 37.9622 6.90561 35.3234C5.81257 32.6845 5.24999 29.8562 5.24999 27C5.24999 24.1437 5.81257 21.3155 6.90561 18.6766C7.99865 16.0378 9.60074 13.6401 11.6204 11.6204C13.6401 9.60075 16.0378 7.99866 18.6766 6.90562C21.3155 5.81258 24.1437 5.25 27 5.25C32.7684 5.25 38.3006 7.54151 42.3796 11.6204C46.4585 15.6993 48.75 21.2315 48.75 27C48.75 32.7685 46.4585 38.3006 42.3796 42.3796C38.3006 46.4585 32.7684 48.75 27 48.75Z"
-          fill={finished ? "#462002" : "#F8F3E8"}
-        />
-      </svg>
     </div>
   );
 }
@@ -160,7 +150,7 @@ export default function Home() {
           </select>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-3 md:grid-cols-2">
           {data
             .filter((item) => {
               if (filter === "all") return true;
