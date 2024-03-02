@@ -10,7 +10,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between bg-sitcon-color8 px-2 py-4">
+    <nav className="flex items-center justify-between bg-sitcon-color8 p-4">
       <h1 className="bg-gradient-to-r from-[#385AACCC] via-[#946E34BF] via-60% to-[#462002] bg-clip-text text-xl font-bold text-transparent">
         SITCON 2024
       </h1>
