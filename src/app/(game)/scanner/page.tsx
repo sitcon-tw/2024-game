@@ -18,7 +18,7 @@ export default function Page() {
   useEffect(() => {
     const handleResult = async () => {
       if (typeof result !== "string") return;
-      var boothToken = await getBoothToken(result);
+      let boothToken = await getBoothToken(result);
       setResult(null);
       if (boothToken) {
         if (!playerToken) {
@@ -40,13 +40,22 @@ export default function Page() {
       setShowInfo(true);
     };
     handleResult();
-  });
+  }, [result]);
 
   return (
     <>
       <Scanner
         onResult={(result) => {
-          setResult(result);
+          if (result.startsWith("http")) {
+            // get token from query string
+            const url = new URL(result);
+            const token = url.searchParams.get("token");
+            if (token) {
+              setResult(token);
+            }
+          } else {
+            setResult(result);
+          }
         }}
       />
       {showInfo && (
