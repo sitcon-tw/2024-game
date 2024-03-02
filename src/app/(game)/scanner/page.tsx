@@ -16,7 +16,7 @@ export default function Page() {
   const playerToken: string | null = useReadLocalStorage("token");
 
   useEffect(() => {
-    const handleResult = async () => {
+    async function handleResult() {
       if (typeof result !== "string") return;
       let boothToken = await getBoothToken(result);
       setResult(null);
@@ -43,7 +43,7 @@ export default function Page() {
         setInfo({ title: "失敗", msg: "掃描失敗，請再試一次。" });
       }
       setShowInfo(true);
-    };
+    }
     handleResult();
   }, [result]);
 
