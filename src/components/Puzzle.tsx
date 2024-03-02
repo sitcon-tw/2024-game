@@ -26,7 +26,7 @@ export default function Puzzle({
             <div
               key={i}
               className={twMerge(
-                "flex select-none items-center justify-center bg-white font-mono text-6xl font-bold text-gray-300",
+                "flex aspect-square select-none items-center justify-center bg-white font-mono text-6xl font-bold text-gray-300",
                 isDone ? "opacity-0" : "",
               )}
             >
