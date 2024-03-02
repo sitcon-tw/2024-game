@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Scanner from "@/components/Scanner";
-
+import { useRouter } from "next/router";
 import { InfoWindow } from "@/components/InfoWindow";
 import { getBoothToken } from "@/lib/getBoothToken";
 import { sendPuzzle2Player } from "@/lib/sendPuzzle2Player";
@@ -14,7 +14,6 @@ export default function Page() {
   const [info, setInfo] = useState({ title: "", msg: "" });
   const [showInfo, setShowInfo] = useState(false);
   const playerToken: string | null = useReadLocalStorage("token");
-
   useEffect(() => {
     async function handleResult() {
       if (typeof result !== "string") return;
@@ -49,20 +48,22 @@ export default function Page() {
 
   return (
     <>
-      <Scanner
-        onResult={(result) => {
-          if (result.startsWith("http")) {
-            // get token from query string
-            const url = new URL(result);
-            const token = url.searchParams.get("token");
-            if (token) {
-              setResult(token);
+      {!showInfo && (
+        <Scanner
+          onResult={(result) => {
+            if (result.startsWith("http")) {
+              // get token from query string
+              const url = new URL(result);
+              const token = url.searchParams.get("token");
+              if (token) {
+                setResult(token);
+              }
+            } else {
+              setResult(result);
             }
-          } else {
-            setResult(result);
-          }
-        }}
-      />
+          }}
+        />
+      )}
       {showInfo && (
         <InfoWindow
           title={info.title}
