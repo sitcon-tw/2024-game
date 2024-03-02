@@ -1,11 +1,10 @@
 "use client";
 
 import { type ActivityType } from "@/data/activity";
-import { heading } from "@/varients/heading";
 import { text } from "@/varients/text";
 import Link from "next/link";
 import { useState } from "react";
-import { twMerge } from "tailwind-merge";
+import { Puzzle } from "lucide-react";
 import Dialog from "./Dialog";
 
 export function useDetail() {
@@ -17,10 +16,22 @@ export function useDetail() {
       return (
         <Dialog open={open} setOpen={setOpen}>
           <div className="flex flex-col gap-4 break-all p-6">
-            <h2 className="flex h-10 items-center justify-center rounded bg-[#B1884C] text-center text-2xl tabular-nums text-white">
-              {activity?.piece} 塊拼圖
+            <h2 className="mx-auto flex w-full items-center justify-between rounded bg-[#B1884C] px-4 py-2 text-center text-xl tabular-nums text-white">
+              <div> {activity?.piece} 塊拼圖</div>{" "}
+              <div className="flex">
+                {Array.from({ length: activity?.piece ?? 0 }).map(
+                  (_, index) => (
+                    <Puzzle
+                      key={index}
+                      size={20}
+                      strokeWidth={2}
+                      className="shrink-0"
+                    />
+                  ),
+                )}
+              </div>
             </h2>
-            <h1 className="font-bold text-[#B1884C] text-2xl">
+            <h1 className="text-2xl font-bold text-[#B1884C]">
               {activity?.name}
             </h1>
             {Array.isArray(activity?.description) &&
