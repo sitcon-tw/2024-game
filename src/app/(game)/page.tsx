@@ -100,14 +100,12 @@ export default function Home() {
   const finishedList = useFinished(useLocalStorage("token", "")[0]);
 
   // This maybe need to be modified
-  function isActivityFinished(activity: ActivityType, index: number) {
-    const finished = finishedList.includes(activity.name);
-    // console.log(activity.name, finished);
-    return finished;
+  function isActivityFinished(activity: ActivityType) {
+    return finishedList.includes(activity.name);
   }
 
-  const data = activities[active].map((item, index) => ({
-    isFinished: isActivityFinished(item, index),
+  const data = activities[active].map((item) => ({
+    isFinished: isActivityFinished(item),
     ...item,
   }));
 
@@ -115,7 +113,7 @@ export default function Home() {
     .filter((item) => item.isFinished || !item.hide)
     .reduce(sum, 0);
   const finishedN = data
-    .filter((item, index) => isActivityFinished(item, index))
+    .filter((item) => isActivityFinished(item))
     .reduce(sum, 0);
 
   return (
