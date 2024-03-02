@@ -43,7 +43,7 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="flex justify-center gap-[70px] bg-sitcon-primary py-5 text-sitcon-secondary">
+    <footer className="grid grid-cols-3 bg-sitcon-primary py-2 text-sitcon-secondary">
       {links.map((link) => (
         <NavLink key={link.href} {...link} />
       ))}
