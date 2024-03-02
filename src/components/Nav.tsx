@@ -5,23 +5,22 @@ import { heading } from "@/varients/heading";
 import { useState } from "react";
 import { text } from "@/varients/text";
 import Dialog from "./Dialog";
-
+import { BookText } from "lucide-react";
 export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
     <nav className="flex items-center justify-between bg-sitcon-color8 px-2 py-4">
-      <h1 className="bg-gradient-to-r from-[#385AACCC] via-[#946E34BF] via-60% to-[#462002] bg-clip-text text-3xl font-bold text-transparent">
+      <h1 className="bg-gradient-to-r from-[#385AACCC] via-[#946E34BF] via-60% to-[#462002] bg-clip-text text-xl font-bold text-transparent">
         SITCON 2024
       </h1>
-      <div
-        className="flex items-center gap-1"
+      <button
+        className="flex cursor-pointer items-center gap-1 text-xl font-bold"
         onClick={() => setOpen((o) => !o)}
       >
-        <Image src={book} width={20} height={22} alt="" />
-        <h3 className={heading({ level: 3 })}>規則</h3>
-      </div>
-
+        <BookText strokeWidth={2.5} />
+        規則
+      </button>
       <Dialog open={open} setOpen={setOpen}>
         <Rule />
       </Dialog>
@@ -32,7 +31,11 @@ export function Nav() {
 function Rule() {
   return (
     <div className="flex flex-col gap-4 px-4 py-2">
-      <h1 className={heading({ level: 1 })}>迷因拼圖</h1>
+      <div className="flex flex-col items-center justify-center gap-2 text-center tracking-wider">
+        <BookText strokeWidth={2} size={48} />
+        <h1 className={heading({ level: 1 })}>規則</h1>
+      </div>
+
       <p className={text({ level: 1 })}>
         今年的大地遊戲，我們將 SITCON 2024
         諸多年會相關活動都融合進了「迷因拼圖」遊戲中，邀請您來一同邊玩邊探索，解鎖所有活動體驗！
