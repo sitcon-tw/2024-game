@@ -36,7 +36,7 @@ function TicketItem({ isDone, num }: { isDone: boolean; num: number }) {
       )}
       <div>
         <div className="text-xl font-bold">抽獎券</div>
-        <div className="text-base font-normal">完成拼圖 {num} 即可獲得</div>
+        <div className="text-base font-normal">完成拼圖 {num} 即可兌換</div>
       </div>
     </div>
   );
