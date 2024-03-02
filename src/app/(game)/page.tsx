@@ -89,6 +89,10 @@ const menus = [
   },
 ];
 
+function sum(a: number, b: ActivityType) {
+  return a + b.piece;
+}
+
 export default function Home() {
   const [active, setActive] = useState(0);
   const [filter, setFilter] = useState<Filter>("all");
@@ -107,10 +111,12 @@ export default function Home() {
     ...item,
   }));
 
-  const totalN = data.filter((item) => item.isFinished || !item.hide).length;
-  const finishedN = data.filter((item, index) =>
-    isActivityFinished(item, index),
-  ).length;
+  const totalN = data
+    .filter((item) => item.isFinished || !item.hide)
+    .reduce(sum, 0);
+  const finishedN = data
+    .filter((item, index) => isActivityFinished(item, index))
+    .reduce(sum, 0);
 
   return (
     <div>
