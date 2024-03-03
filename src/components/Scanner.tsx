@@ -115,6 +115,7 @@ function FromCamera({
           onResult(text);
         }
       }}
+      scanDelay={500}
       constraints={{
         deviceId: currentCamera!,
       }}
