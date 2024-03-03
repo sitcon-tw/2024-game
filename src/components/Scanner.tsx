@@ -50,7 +50,7 @@ function Scanner({ onResult }: { onResult: (result: string) => void }) {
   const [currentCamera, setCurrentCamera] = useState<string>(manual);
 
   return (
-    <div className="relative flex h-full w-full items-center justify-center text-center">
+    <div className="relative flex h-full min-h-[396px] w-full items-center justify-center text-center">
       <select
         onChange={(e) => setCurrentCamera(e.target.value)}
         value={currentCamera || ""}
