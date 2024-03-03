@@ -7,12 +7,36 @@ import { getBoothToken } from "@/lib/getBoothToken";
 import { sendPuzzle2Player } from "@/lib/sendPuzzle2Player";
 import { useReadLocalStorage } from "usehooks-ts";
 import { invalidToken, puzzleSuccess, puzzleTaken } from "@/lib/const";
+import { getPlayerPuzzle } from "@/lib/getPlayerPuzzle";
 
 export default function Page() {
+  const playerToken: string | null = useReadLocalStorage("token");
+  const [taken, setTaken] = useState(false);
+
+  useEffect(() => {
+    if (!playerToken) return;
+    getPlayerPuzzle(playerToken)
+      .then((player) => {
+        if (typeof player.coupon === "number") setTaken(true);
+      })
+      .catch(console.error);
+  }, [playerToken]);
+
+  if (taken) {
+    return (
+      <div className="flex h-full items-center justify-center">
+        <div className="text-3xl">你已經領取過拼圖了</div>
+      </div>
+    );
+  } else {
+    return <Scan playerToken={playerToken} />;
+  }
+}
+
+function Scan({ playerToken }: { playerToken: string | null }) {
   const [result, setResult] = useState<string | null>(null);
   const [info, setInfo] = useState({ title: "", msg: "" });
   const [showInfo, setShowInfo] = useState(false);
-  const playerToken: string | null = useReadLocalStorage("token");
   useEffect(() => {
     async function handleResult() {
       if (showInfo) return;
