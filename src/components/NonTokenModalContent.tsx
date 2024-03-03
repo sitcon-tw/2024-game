@@ -57,7 +57,7 @@ const NonTokenModalContent = () => {
               <div className="flex items-center">
                 <i className="bx bx-qr-scan text-4xl"></i>
                 <div className="ml-4">
-                  <div>掃描票券 QR Code</div>
+                  <div>掃描票券 QR code</div>
                 </div>
               </div>
             </div>
@@ -96,10 +96,10 @@ const NonTokenModalContent = () => {
 
           <Dialog open={scanQRCodeModal} setOpen={setScanQRCodeModal}>
             <div className="flex flex-col gap-4 break-all p-6">
-              <div>掃描票券 QR Code</div>
+              <div>掃描票券 QR code</div>
               <div>
                 <p className="mt-0">
-                  請開啟 OPass 中的我的票券，並掃描其中的 QR Code
+                  請開啟 OPass 中的我的票券，並掃描其中的 QR code
                 </p>
                 <Scanner
                   onResult={(result) => {

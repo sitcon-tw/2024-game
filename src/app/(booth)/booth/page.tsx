@@ -17,9 +17,7 @@ export default function Page() {
         const boothToken = new URLSearchParams(window.location.search).get(
           "token",
         )!;
-        setBoothToken(
-          boothToken,
-        );
+        setBoothToken(boothToken);
         if (boothName === null) {
           const boothName = (await getBoothName(boothToken))?.slug;
           setBoothName(boothName ? boothName : "（攤位不存在）");
@@ -62,7 +60,7 @@ export default function Page() {
           />
         </div>
         <div className="text-center text-2xl text-gray-600">
-          請刷取會眾 OPass 上的 QR Code
+          請刷取會眾 OPass 上的 QR code
           <br />
           攤位: {boothName}
         </div>
