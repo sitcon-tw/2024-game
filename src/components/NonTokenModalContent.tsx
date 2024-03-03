@@ -101,7 +101,7 @@ const NonTokenModalContent = () => {
               <div className="text-center text-xl font-bold">
                 掃描票券 QR code
               </div>
-              <div className="relative">
+              <div className="relative h-[396px]">
                 <Scanner
                   onResult={(result) => {
                     setResult(result);
@@ -113,7 +113,7 @@ const NonTokenModalContent = () => {
                   }}
                 />
 
-                <p className="absolute bottom-4 left-0 right-0 m-auto inline-block w-max rounded bg-black/40 px-3 py-1 text-white shadow-xl backdrop-blur">
+                <p className="absolute bottom-0 left-0 right-0 m-auto inline-block w-max max-w-full rounded-t-xl bg-sitcon-secondary/40 px-3 py-1 text-center text-white backdrop-blur">
                   請開啟 OPass 中的我的票券，並掃描其中的 QR code
                 </p>
               </div>
