@@ -10,7 +10,7 @@ export default function Select({
 } & React.SelectHTMLAttributes<HTMLSelectElement>) {
   return (
     <div className={twMerge("relative", containerClassName)}>
-      <select {...props} className={className}>
+      <select {...props} className={twMerge(className, "pr-10")}>
         {children}
       </select>
       <ChevronDown
