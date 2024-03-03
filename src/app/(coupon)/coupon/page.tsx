@@ -1,15 +1,22 @@
 "use client";
 import Scanner from "@/components/Scanner";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Result } from "./Result";
 
 export default function Page() {
-    const router = useRouter();
+    const [result, setResult] = useState<string | null>(null);
 
-    return <div className="flex h-screen w-screen flex-col items-center justify-center">
-        <Scanner
-            onResult={(result) => {
-                window.location.replace(`/coupon/query?token=${result}`)
-            }}
-        />
-    </div>
+    return (
+        <div className="flex h-screen w-screen flex-col items-center justify-center">
+            {result === null ? (
+                <Scanner
+                    onResult={(result) => {
+                        setResult(result);
+                    }}
+                />
+            ) : (
+                <Result token={result} clear={() => setResult(null)} />
+            )}
+        </div>
+    );
 }

@@ -11,7 +11,7 @@ async function sha1(str: string) {
 }
 
 export type PlayerData = {
-    cuppon: null; // IDK what this is
+    coupon: null | number;
     deliverers: {
         deliverer: string;
         timestamp: number;
