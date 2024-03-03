@@ -14,9 +14,9 @@ export default function Select({
         {children}
       </select>
       <ChevronDown
-        strokeWidth={1}
+        strokeWidth={1.5}
         size={24}
-        className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 transform"
+        className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 transform opacity-50"
       />
     </div>
   );
