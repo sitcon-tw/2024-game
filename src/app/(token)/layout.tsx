@@ -21,7 +21,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </Head>
-      <body className="flex min-h-screen w-screen flex-col bg-sitcon-color8 font-sans text-gray-950">
+      <body className="flex w-screen flex-col bg-sitcon-color8 font-sans text-gray-950">
         {children}
       </body>
     </html>
