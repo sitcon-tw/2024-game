@@ -157,7 +157,7 @@ export default function Home() {
           </Select>
         </div>
 
-        <div className="grid gap-3 md:grid-cols-2">
+        <div className="grid gap-2 md:grid-cols-2">
           {data
             .filter((item) => {
               if (filter === "all") return true;
