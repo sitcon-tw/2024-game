@@ -39,7 +39,9 @@ export function TicketItem({
       )}
       <div>
         <div className="text-xl font-bold">抽獎券</div>
-        <div className="text-base font-normal">完成拼圖 {num} 即可兌換</div>
+        <div className="text-base font-normal">
+          {isDone ? `可至服務台兌換抽獎券` : `完成拼圖 ${num} 即可兌換`}
+        </div>
       </div>
     </div>
   );
