@@ -5,7 +5,15 @@ import { useState } from "react";
 import Dialog from "@/components/Dialog";
 import { twMerge } from "tailwind-merge";
 
-export function TicketItem({ isDone, num }: { isDone: boolean; num: number }) {
+export function TicketItem({
+  isDone,
+  num,
+  taken,
+}: {
+  isDone: boolean;
+  num: number;
+  taken: boolean;
+}) {
   return (
     <div
       className={twMerge(
@@ -13,6 +21,7 @@ export function TicketItem({ isDone, num }: { isDone: boolean; num: number }) {
         isDone
           ? "bg-sitcon-secondary text-[#462002]"
           : "border-opacity-50 bg-white",
+        taken && "grayscale",
       )}
     >
       {isDone ? (

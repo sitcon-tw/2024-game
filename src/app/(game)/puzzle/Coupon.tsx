@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { TicketItem, TicketRules } from "./Ticket";
-import { heading } from "@/varients/heading";
 import { getPlayerPuzzle } from "@/lib/getPlayerPuzzle";
 
 export function Coupon({
@@ -30,17 +29,22 @@ export function Coupon({
         <div className="text-2xl font-bold">累計獎勵</div>
         <TicketRules />
       </div>
-      <div className="my-2 grid gap-2 md:grid-cols-3">
-        {taken ? (
-          <h1 className={heading({ level: 1, align: "center" })}>已兌換</h1>
-        ) : (
-          <>
-            <TicketItem isDone={finishedN >= 9} num={1} />
-            <TicketItem isDone={finishedN >= 25} num={2} />
-            <TicketItem isDone={finishedN >= 41} num={3} />
-          </>
-        )}
+      <div className="relative my-2 grid gap-2 md:grid-cols-3">
+        <TicketItem isDone={finishedN >= 9} num={1} taken={taken} />
+        <TicketItem isDone={finishedN >= 25} num={2} taken={taken} />
+        <TicketItem isDone={finishedN >= 41} num={3} taken={taken} />
+        {taken && <Taken />}
       </div>
+    </div>
+  );
+}
+
+function Taken() {
+  return (
+    <div className="absolute z-10 flex w-full justify-center">
+      <h1 className="rotate-[-15deg] border-4 border-dashed border-black text-[25vw] md:text-[5vw]">
+        已兌換
+      </h1>
     </div>
   );
 }
