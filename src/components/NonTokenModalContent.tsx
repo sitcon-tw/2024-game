@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Dialog from "./Dialog";
 import Scanner from "./Scanner";
 import { getPlayerPuzzle } from "@/lib/getPlayerPuzzle";
@@ -9,6 +9,7 @@ import { KeyRound, FormInput, QrCode } from "lucide-react";
 const NonTokenModalContent = () => {
   const [isModalOpen, setModalOpen] = useState(true);
   const [manualInputModal, setManualInputModal] = useState<boolean>(false);
+  const manualInputRef = useRef<HTMLInputElement>(null);
   const [scanQRCodeModal, setScanQRCodeModal] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState("");
   const [result, setResult] = useState<string | null>(null);
@@ -31,6 +32,11 @@ const NonTokenModalContent = () => {
     };
     handleLogin();
   });
+  useEffect(() => {
+    if (manualInputRef.current) {
+      manualInputRef.current.focus();
+    }
+  }, [manualInputRef, manualInputModal]);
 
   return (
     <div>
@@ -73,6 +79,7 @@ const NonTokenModalContent = () => {
                 className="w-full rounded-xl border px-4 py-2"
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="請輸入票券代碼"
+                ref={manualInputRef}
               />
 
               <div className="flex w-full flex-col gap-2">
