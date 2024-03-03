@@ -47,7 +47,7 @@ export async function getCoupon(token: string): Promise<Coupon> {
 
 const style = {
     查詢中: "",
-    已兌換: "bg-yellow-500",
+    已兌換: "bg-orange-500",
     兌換成功: "bg-green-500",
     錯誤: "bg-red-500 text-white",
 };
