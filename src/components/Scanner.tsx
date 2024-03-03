@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { QrReader } from "react-qr-reader";
-
+import Select from "@/components/Select";
 // Override console.error
 // This is a hack to suppress the warning about missing defaultProps in react-qr-reader
 const error = console.error;
@@ -51,10 +51,11 @@ function Scanner({ onResult }: { onResult: (result: string) => void }) {
 
   return (
     <div className="relative flex h-full min-h-[396px] w-full items-center justify-center text-center">
-      <select
+      <Select
         onChange={(e) => setCurrentCamera(e.target.value)}
         value={currentCamera || ""}
-        className="absolute left-0 right-0 top-4 z-[1] m-auto w-[256px] rounded-md bg-white/75 p-2 shadow-md outline-0 backdrop-blur-lg"
+        className="w-full appearance-none rounded-md bg-white/75 p-2 shadow-md outline-0 backdrop-blur-lg"
+        containerClassName="absolute left-0 right-0 top-4 z-[1] w-[256px] m-auto"
       >
         <option value={manual}>手動輸入</option>
         {cameras.map((camera) => (
@@ -62,7 +63,7 @@ function Scanner({ onResult }: { onResult: (result: string) => void }) {
             {camera.label}
           </option>
         ))}
-      </select>
+      </Select>
 
       {currentCamera === "manual" ? (
         <Manual onResult={onResult} />

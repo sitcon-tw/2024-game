@@ -11,7 +11,7 @@ import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useLocalStorage } from "usehooks-ts";
 import { CheckCircle2, Circle } from "lucide-react";
-
+import Select from "@/components/Select";
 function Activity({
   activity,
   finished,
@@ -146,15 +146,15 @@ export default function Home() {
         </div>
 
         <div className="flex justify-end">
-          <select
+          <Select
             value={filter}
             onChange={(e) => setFilter(e.target.value as Filter)}
-            className="h-10 w-24 rounded-xl border-2 border-sitcon-secondary bg-sitcon-white px-3 py-[6px]"
+            className="h-10 w-24 appearance-none rounded-xl border-2 border-sitcon-secondary bg-sitcon-white px-3 py-[6px]"
           >
             <option value="all">全部</option>
             <option value="finished">已完成</option>
             <option value="unfinished">未完成</option>
-          </select>
+          </Select>
         </div>
 
         <div className="grid gap-3 md:grid-cols-2">
