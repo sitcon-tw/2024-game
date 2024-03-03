@@ -38,8 +38,8 @@ export function Coupon({
           )}
         >
           <TicketItem isDone={finishedN >= 9} num={1} taken={taken} />
-          <TicketItem isDone={finishedN >= 25} num={2} taken={taken} />
-          <TicketItem isDone={finishedN >= 41} num={3} taken={taken} />
+          <TicketItem isDone={finishedN >= 18} num={2} taken={taken} />
+          <TicketItem isDone={finishedN >= 34} num={3} taken={taken} />
         </div>
         {taken && <Taken />}
       </div>

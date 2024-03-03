@@ -30,15 +30,15 @@ export default function Page() {
   const puzzle1 = Array.from({ length: 9 })
     .map((_, i) => i + 1)
     .sort((a, b) => playerToken.charCodeAt(a) - playerToken.charCodeAt(b));
-  const puzzle2 = Array.from({ length: 16 })
-    .map((_, i) => i + 1)
-    .sort((a, b) => playerToken.charCodeAt(a) - playerToken.charCodeAt(b));
-  const puzzle3 = Array.from({ length: 16 })
+  const puzzle2 = Array.from({ length: 9 })
     .map((_, i) => i + 1)
     .sort((a, b) => playerToken.charCodeAt(b) - playerToken.charCodeAt(a));
+  const puzzle3 = Array.from({ length: 16 })
+    .map((_, i) => i + 1)
+    .sort((a, b) => playerToken.charCodeAt(a) - playerToken.charCodeAt(b));
   const done1 = puzzle1.slice(0, finishedN);
   const done2 = puzzle2.slice(0, Math.max(finishedN - 9, 0));
-  const done3 = puzzle3.slice(0, Math.max(finishedN - 9 - 16, 0));
+  const done3 = puzzle3.slice(0, Math.max(finishedN - 9 - 9, 0));
   return (
     <div>
       <Menu
@@ -49,7 +49,7 @@ export default function Page() {
       {active === 0 ? (
         <Puzzle src="/meme/meme-1.jpg" done={done1} size="3x3" />
       ) : active === 1 ? (
-        <Puzzle src="/meme/meme-2.jpg" done={done2} size="4x4" />
+        <Puzzle src="/meme/meme-2.jpg" done={done2} size="3x3" />
       ) : active === 2 ? (
         <Puzzle src="/meme/meme-3.jpg" done={done3} size="4x4" />
       ) : null}

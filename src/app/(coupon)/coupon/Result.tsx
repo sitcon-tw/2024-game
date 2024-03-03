@@ -54,8 +54,8 @@ const style = {
 
 function finished(piece: number) {
   if (piece < 9) return 0;
-  if (piece < 25) return 1;
-  if (piece < 41) return 2;
+  if (piece < 18) return 1;
+  if (piece < 34) return 2;
   else return 3;
 }
 
