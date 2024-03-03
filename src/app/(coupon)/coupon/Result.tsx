@@ -52,6 +52,13 @@ const style = {
     錯誤: "bg-red-500 text-white",
 };
 
+function finished(piece: number) {
+    if (piece < 9) return 0;
+    if (piece < 25) return 1;
+    if (piece < 41) return 2;
+    else return 3;
+}
+
 export function Result({ token, clear }: { token: string; clear: () => void }) {
     const [state, setState] = useState<"查詢中" | "已兌換" | "兌換成功" | "錯誤">(
         "查詢中",
@@ -83,7 +90,7 @@ export function Result({ token, clear }: { token: string; clear: () => void }) {
                     <p>name: {coupon.name}</p>
                     <p className="text-xl">token: {token}</p>
                     {coupon.taken && <p>{formatDate(coupon.taken)}</p>}
-                    <p>{Math.floor(coupon.piece / 9)} 塊拼圖</p>
+                    <p>{finished(coupon.piece)} 塊拼圖</p>
                 </>
             )}
             <button
