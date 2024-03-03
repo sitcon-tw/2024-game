@@ -49,8 +49,8 @@ export function Coupon({
 
 function Taken() {
   return (
-    <div className="absolute inset-0 z-10 m-auto flex w-full justify-center">
-      <h1 className="rotate-[-15deg] border-4 border-dashed border-sitcon-color6 text-[25vw] text-sitcon-primary md:text-[5vw]">
+    <div className="absolute inset-0 z-10 m-auto flex w-full items-center justify-center">
+      <h1 className="h-min rotate-[-15deg] rounded-lg border-4 border-dashed border-sitcon-primary bg-sitcon-primary/5 px-4 text-[72px] text-sitcon-primary backdrop-blur-xl">
         已兌換
       </h1>
     </div>

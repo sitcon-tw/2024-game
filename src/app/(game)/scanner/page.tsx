@@ -25,7 +25,7 @@ export default function Page() {
   if (taken) {
     return (
       <div className="flex h-full items-center justify-center">
-        <div className="text-3xl">你已經領取過拼圖了</div>
+        <div className="text-3xl">你已經領取過抽獎券了</div>
       </div>
     );
   } else {
