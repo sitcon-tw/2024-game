@@ -10,8 +10,14 @@ export const heading = tv({
       4: "text-[20px] leading-[24px]",
       5: "text-[18px] leading-[21.6px]",
     },
+    align: {
+      left: "text-left",
+      center: "text-center",
+      right: "text-right",
+    },
   },
   defaultVariants: {
     level: 1,
+    align: 'left'
   },
 });
