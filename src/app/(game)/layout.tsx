@@ -2,7 +2,7 @@
 import Head from "next/head";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
-import { useReadLocalStorage } from "usehooks-ts";
+import { useLocalStorage } from "usehooks-ts";
 
 import "../globals.css";
 import NonTokenModalContent from "@/components/NonTokenModalContent";
@@ -14,9 +14,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [isClient, setIsClient] = useState(false);
-  const token: string | null = useReadLocalStorage("token");
+  const [token, setToken] = useLocalStorage<string | null>("token", null);
   useEffect(() => {
     setIsClient(true);
+    // read token from query string
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      const token = url.searchParams.get("token");
+      if (token) {
+        setToken(token);
+      }
+    }
   }, []);
 
   return (
