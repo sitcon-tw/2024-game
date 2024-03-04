@@ -52,9 +52,9 @@ function Scan({ playerToken }: { playerToken: string | null }) {
         try {
           const result = await sendPuzzle2Player(playerToken, boothToken);
           if (result === puzzleSuccess) {
-            setInfo({ title: "已完成", msg: "恭喜獲得拼圖!!" });
+            setInfo({ title: "成功", msg: "恭喜獲得拼圖！" });
           } else if (result === puzzleTaken) {
-            setInfo({ title: "失敗", msg: "此拼圖已存在。" });
+            setInfo({ title: "成功", msg: "你已經有這個拼圖了！" });
           } else if (result === invalidToken) {
             setInfo({ title: "失敗", msg: "請先報到。" });
           }
