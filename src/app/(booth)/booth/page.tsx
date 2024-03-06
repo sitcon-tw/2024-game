@@ -8,6 +8,7 @@ import { sendPuzzle2Player } from "@/lib/sendPuzzle2Player";
 import { invalidToken, puzzleSuccess, puzzleTaken } from "@/lib/const";
 import { getBoothName } from "@/lib/getBoothName";
 import { getPlayerPuzzle } from "@/lib/getPlayerPuzzle";
+import { QrCode } from "lucide-react";
 export default function Page() {
   const [playerToken, setPlayerToken] = useState<string | null>(null);
   const [boothToken, setBoothToken] = useState("");
@@ -43,28 +44,29 @@ export default function Page() {
   return (
     <div>
       <motion.div
-        className="mx-auto w-full max-w-[512px] px-2 py-10"
+        className="mx-auto w-full max-w-[512px] px-2 py-10 text-gray-950"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 100 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-center text-4xl font-bold">
+        <QrCode size={32} className="m-auto" />
+        <h1 className="mt-2 text-center text-xl tracking-wider opacity-75">
           攤位掃描器
-          <span className="absolute">！</span>
         </h1>
-        <div className="my-4 flex flex-wrap items-center justify-between gap-6 rounded-2xl bg-gray-50 p-4 pl-6 text-center shadow">
-          <Scanner
-            onResult={(result) => {
-              console.log(result);
-              setPlayerToken(result);
-            }}
-          />
+        <h1 className="text-center text-2xl font-bold">{boothName}</h1>
+        <div className="my-4 flex w-full items-center justify-center gap-6 rounded-2xl bg-gray-50 p-2 text-center shadow">
+          <div className="aspect-square w-full overflow-hidden rounded-xl">
+            <Scanner
+              onResult={(result) => {
+                console.log(result);
+                setPlayerToken(result);
+              }}
+            />
+          </div>
         </div>
-        <div className="text-center text-2xl text-gray-600">
-          請刷取會眾 OPass 上的 QR code
-          <br />
-          攤位: {boothName}
+        <div className="text-center text-xl text-gray-600">
+          請掃描會眾 Opass 中的 QR code
         </div>
       </motion.div>
       <ToastContainer />
