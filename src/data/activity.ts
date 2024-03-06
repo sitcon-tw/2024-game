@@ -109,7 +109,7 @@ const booths: ActivityType[] = [
     piece: 1,
   },
   {
-    name: "台灣創新創業青年領袖協會（品牌名稱：StarUp人才孵化器）",
+    name: "StarUp 人才孵化器",
     description: [
       "StarUp人才孵化器致力透過建置校園創新創業生態系，培育新時代的未來領袖。",
       "",
