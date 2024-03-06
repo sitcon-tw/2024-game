@@ -66,7 +66,7 @@ export default function Page() {
           </div>
         </div>
         <div className="text-center text-xl text-gray-600">
-          請掃描會眾 Opass 中的 QR code
+          請掃描會眾 OPass 中的 QR code
         </div>
       </motion.div>
       <ToastContainer />
