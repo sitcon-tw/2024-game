@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { sendPuzzle2Player } from "@/lib/sendPuzzle2Player";
 import { invalidToken, puzzleSuccess, puzzleTaken } from "@/lib/const";
 import { getBoothName } from "@/lib/getBoothName";
+import { getPlayerPuzzle } from "@/lib/getPlayerPuzzle";
 export default function Page() {
   const [playerToken, setPlayerToken] = useState<string | null>(null);
   const [boothToken, setBoothToken] = useState("");
@@ -25,13 +26,14 @@ export default function Page() {
       }
       if (typeof playerToken !== "string") return;
       const result = await sendPuzzle2Player(playerToken, boothToken);
+      const playerInfo = await getPlayerPuzzle(playerToken);
       setPlayerToken(null);
       if (result === puzzleSuccess) {
-        toast(`已為 ${playerToken} 增加拼圖`, { type: "success" });
+        toast(`已為 ${playerInfo.user_id} 增加拼圖`, { type: "success" });
       } else if (result === puzzleTaken) {
-        toast(`${playerToken} 已存在這張拼圖`, { type: "warning" });
+        toast(`${playerInfo.user_id} 已存在這張拼圖`, { type: "warning" });
       } else if (result === invalidToken) {
-        toast(`${playerToken} 尚未報到`, {
+        toast(`${playerInfo.user_id} 尚未報到`, {
           type: "error",
         });
       }
