@@ -50,28 +50,31 @@ function Scanner({ onResult }: { onResult: (result: string) => void }) {
   const [currentCamera, setCurrentCamera] = useState<string>(manual);
 
   return (
-    <>
-      <p>若遇到掃描器出不來的情況，多切換幾次或使用手動輸入</p>
-      <div className="relative flex h-full min-h-[396px] w-full items-center justify-center text-center">
-        <Select
-          onChange={(e) => setCurrentCamera(e.target.value)}
-          value={currentCamera || ""}
-          className="w-full appearance-none rounded-md bg-white/75 p-2 shadow-md outline-0 backdrop-blur-lg"
-          containerClassName="absolute left-0 right-0 top-4 z-[1] w-[256px] m-auto"
-        >
-          <option value={manual}>手動輸入</option>
-          {cameras.map((camera) => (
-            <option key={camera.deviceId} value={camera.deviceId}>
-              {camera.label}
-            </option>
-          ))}
-        </Select>
+    <div className="relative flex h-full min-h-[396px] w-full items-center justify-center text-center">
+      <Select
+        onChange={(e) => setCurrentCamera(e.target.value)}
+        value={currentCamera || ""}
+        className="w-full appearance-none rounded-md bg-white/75 p-2 shadow-md outline-0 backdrop-blur-lg"
+        containerClassName="absolute left-0 right-0 top-4 z-[1] w-[256px] m-auto"
+      >
+        <option value={manual}>手動輸入</option>
+        {cameras.map((camera) => (
+          <option key={camera.deviceId} value={camera.deviceId}>
+            {camera.label}
+          </option>
+        ))}
+      </Select>
 
-        {currentCamera === "manual"
-          ? <Manual onResult={onResult} />
-          : <FromCamera currentCamera={currentCamera} onResult={onResult} />}
-      </div>
-    </>
+      <p className="absolute left-0 right-0 top-16 m-auto text-xs">
+        若無法使用掃描器，請從上方選單選擇「手動輸入」。
+      </p>
+
+      {currentCamera === "manual" ? (
+        <Manual onResult={onResult} />
+      ) : (
+        <FromCamera currentCamera={currentCamera} onResult={onResult} />
+      )}
+    </div>
   );
 }
 
