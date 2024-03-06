@@ -51,7 +51,7 @@ function Scanner({ onResult }: { onResult: (result: string) => void }) {
 
   return (
     <>
-      <p>若遇到掃瞄器出不來的情況，多切換幾次或使用手動輸入</p>
+      <p>若遇到掃描器出不來的情況，多切換幾次或使用手動輸入</p>
       <div className="relative flex h-full min-h-[396px] w-full items-center justify-center text-center">
         <Select
           onChange={(e) => setCurrentCamera(e.target.value)}
