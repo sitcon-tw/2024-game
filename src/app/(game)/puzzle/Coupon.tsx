@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { TicketItem, TicketRules } from "./Ticket";
 import { getPlayerPuzzle } from "@/lib/getPlayerPuzzle";
 import { twMerge } from "tailwind-merge";
-
+import { Info } from "lucide-react";
 export function Coupon({
   finishedN,
   token,
@@ -42,6 +42,12 @@ export function Coupon({
           <TicketItem isDone={finishedN >= 34} num={3} taken={taken} />
         </div>
         {taken && <Taken />}
+      </div>
+      <div className="flex items-center gap-2 rounded-xl bg-black/5 p-3 text-sm text-gray-600">
+        <Info size={20} className="shrink-0" />
+        <div>
+          每人僅限兌換乙次抽獎券，至服務台兌換後即不得再繼續累積拼圖和更多抽獎券。
+        </div>
       </div>
     </div>
   );
