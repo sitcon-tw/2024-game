@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useLocalStorage } from "usehooks-ts";
-import { CheckCircle2, Circle, Info } from "lucide-react";
+import { CheckCircle2, Circle, Info, ExternalLink } from "lucide-react";
 import Select from "@/components/Select";
 function Activity({
   activity,
@@ -66,9 +66,11 @@ const menus = [
         邁開您的腳步，來一一踩點{" "}
         <Link
           href="https://sitcon.org/2024/events/"
-          className="text-[#B1884C] underline hover:underline-offset-2"
+          className="inline-flex items-center gap-1 text-[#B1884C] underline underline-offset-2"
+          target="_blank"
+          rel="noreferrer noopener"
         >
-          SITCON 2024 各大年會活動
+          SITCON 2024 各大年會活動 <ExternalLink size={16} strokeWidth={2} />
         </Link>{" "}
         吧！請您在走訪各項有趣活動的過程中，找到藏身於活動地點各個角落的 QR
         code，並依照活動說明中的提示完成任務，即可獲得其對應之拼圖獎勵。（請尊重每位與會者的活動體驗，不得逕行翻拍）
