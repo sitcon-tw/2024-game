@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useLocalStorage } from "usehooks-ts";
-import { CheckCircle2, Circle } from "lucide-react";
+import { CheckCircle2, Circle, Info } from "lucide-react";
 import Select from "@/components/Select";
 function Activity({
   activity,
@@ -53,8 +53,9 @@ const menus = [
         驚喜總藏身於次次交流之中，去聽聽看、玩玩看各種不同的攤位都在做些什麼吧！依照各攤位的指示完成其要求條件，並出示您的
         QR code 給攤位端掃描，即可獲得該攤位的拼圖獎勵。
       </p>,
-      <p key="booth-2">
-        註：您可以在 OPass 首頁的「我的票券」中找到您的 QR code。
+      <p key="booth-2" className="mt-2 flex items-center gap-2 opacity-75">
+        <Info size={20} strokeWidth={2} />
+        您可以在 OPass 首頁的「我的票券」中找到您的 QR code。
       </p>,
     ],
   },
