@@ -1,7 +1,4 @@
 "use client";
-import Image from "next/image";
-import book from "@/img/book.svg";
-import { heading } from "@/varients/heading";
 import { useState } from "react";
 import { text } from "@/varients/text";
 import Dialog from "./Dialog";
