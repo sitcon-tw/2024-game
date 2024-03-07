@@ -16,7 +16,7 @@ export function Nav() {
         SITCON 2024
       </h1>
       <button
-        className="flex cursor-pointer items-center gap-1 text-xl font-bold"
+        className="flex cursor-pointer items-center gap-1 text-xl font-bold underline underline-offset-2"
         onClick={() => setOpen((o) => !o)}
       >
         <BookText strokeWidth={2.5} />
