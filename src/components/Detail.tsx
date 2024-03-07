@@ -36,9 +36,9 @@ export function useDetail() {
             </h1>
             {Array.isArray(activity?.description) &&
               activity.description.map((desc, index) => (
-                <pre key={index} className={text({ level: 1 })}>
-                  {desc}
-                </pre>
+                <p key={index} className={text({ level: 1 })}>
+                  {desc.replace(" ", "\u00a0")}
+                </p>
               ))}
             {activity?.link && (
               <Link
