@@ -54,7 +54,7 @@ const menus = [
         QR code 給攤位端掃描，即可獲得該攤位的拼圖獎勵。
       </p>,
       <p key="booth-2">
-        註：您可以在 OPass 系統左上角的選單中找到自己的 QR code。
+        註：您可以在 OPass 首頁的「我的票券」中找到您的 QR code。
       </p>,
     ],
   },
