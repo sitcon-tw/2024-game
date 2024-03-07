@@ -25,10 +25,8 @@ export function Menu({ texts, active, setActive }: Props) {
           {active === index && (
             <motion.div
               layoutId="bg"
-              className="absolute inset-0 h-full w-full bg-sitcon-primary"
+              className="absolute inset-0 h-full w-full rounded-2xl bg-sitcon-primary"
               style={{
-                borderRadius:
-                  ["0 16px 16px 0", "16px", "16px 0 0 16px"][index] ?? "16px",
                 originY: "0px",
               }}
             />
