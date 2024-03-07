@@ -43,7 +43,7 @@ export function Coupon({
         </div>
         {taken && <Taken />}
       </div>
-      <div className="flex items-center gap-2 rounded-xl bg-black/5 p-3 text-sm text-gray-600">
+      <div className="bg-noise flex items-center gap-2 rounded-xl bg-black/5 p-3 text-sm text-gray-600">
         <Info size={20} className="shrink-0" />
         <div>
           每人僅限兌換乙次抽獎券，至服務台兌換後即不得再繼續累積拼圖和更多抽獎券。

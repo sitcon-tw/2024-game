@@ -1,9 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
@@ -22,6 +20,9 @@ const config: Config = {
       fontFamily: {
         sans: ["Lato", "Noto Sans TC", "sans-serif"],
         rubik: ["Rubik", "Noto Sans TC", "sans-serif"],
+      },
+      backgroundImage: {
+        noise: `url(/noise.svg)`,
       },
     },
   },
