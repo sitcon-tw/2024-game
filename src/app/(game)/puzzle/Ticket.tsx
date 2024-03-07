@@ -40,7 +40,9 @@ export function TicketItem({
       <div>
         <div className="text-xl font-bold">抽獎券</div>
         <div className="text-base font-normal">
-          {isDone ? `可至服務台兌換抽獎券` : `完成拼圖 ${num} 即可兌換`}
+          {isDone
+            ? `可至 3F 議程組服務台兌換抽獎券`
+            : `完成拼圖 ${num} 即可兌換`}
         </div>
       </div>
     </div>
@@ -66,7 +68,7 @@ export function TicketRules() {
           參與抽獎過程，屆時將由工作人員現場抽出 12
           位幸運朋友，於公布中獎名單後將中獎序號推播到 OPass
           系統公告，請中獎者確認序號後於下午 4 點 50 分前至 3F
-          服務台出示抽獎券留存票根領取獎品。
+          議程組服務台出示抽獎券留存票根領取獎品。
           <div className="mt-2 text-xl font-bold">注意事項：</div>
           <ul className="list-inside list-disc">
             <li>本活動以抽獎券留存票根為兌獎憑證，請務必妥善保管以便兌獎。</li>
