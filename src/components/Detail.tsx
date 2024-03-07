@@ -17,7 +17,7 @@ export function useDetail() {
         <Dialog open={open} setOpen={setOpen}>
           <div className="flex flex-col gap-4 break-all p-6">
             <h2 className="mx-auto flex w-full items-center justify-between rounded bg-[#B1884C] px-4 py-2 text-center text-xl tabular-nums text-white">
-              <div> {activity?.piece} 塊拼圖</div>{" "}
+              <div>{activity?.piece} 塊拼圖</div>{" "}
               <div className="flex">
                 {Array.from({ length: activity?.piece ?? 0 }).map(
                   (_, index) => (
@@ -36,9 +36,9 @@ export function useDetail() {
             </h1>
             {Array.isArray(activity?.description) &&
               activity.description.map((desc, index) => (
-                <p key={index} className={text({ level: 1 })}>
+                <pre key={index} className={text({ level: 1 })}>
                   {desc}
-                </p>
+                </pre>
               ))}
             {activity?.link && (
               <Link
