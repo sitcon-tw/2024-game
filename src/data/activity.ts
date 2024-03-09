@@ -42,7 +42,7 @@ const booths: ActivityType[] = [
     link: "https://about.dcard.tw/joblist",
   },
   {
-    name: "曉數碼 Akatsuki",
+    name: "曉數碼 Akatsuki Taiwan Inc.",
     description: [
       "曉數碼為 Akatsuki Inc. 於 2014 年在台灣設立的子公司，以「與創作者共鳴，娛樂全世界」為使命，致力於開發、營運各種能躍動人心的遊戲。",
       "曉數碼重視在地化品質並放眼國際市場，團隊中聚集來自各地的成員，包含台、日、韓、英、法、德、西與印度等多語言人才。我們亦積極打造幸福職場，以此支持成員們盡情發揮創意，使其發光發熱，共同成長。",
