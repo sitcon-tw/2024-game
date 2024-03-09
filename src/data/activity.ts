@@ -34,7 +34,7 @@ const booths: ActivityType[] = [
     link: "https://www.ct.ntust.edu.tw/ct/",
   },
   {
-    name: "Dcard",
+    name: "Dcard 狄卡科技",
     description: [
       "Dcard 是全台最大匿名社群， 從台灣走向世界，每月不重複訪客高達 2,200 萬，發展出廣告、電商、跨國市場等領域，持續探索新型商業模式，邁向世界級網路公司前進。",
     ],
